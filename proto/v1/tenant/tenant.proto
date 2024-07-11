@@ -1,0 +1,59 @@
+syntax = "proto2";
+
+package tenant;
+
+message TenantV1 {
+  required string id = 1;
+  optional string selfcareId = 2;
+  required ExternalIdV1 externalId = 3;
+  repeated TenantFeatureV1 features = 4;
+  required int64 createdAt = 5;
+  optional int64 updatedAt = 6;
+  optional string name = 7;
+  optional TenantKindV1 kind = 8;
+  optional int64 onboardedAt = 9;
+  optional TenantUnitTypeV1 subUnitType = 10;
+}
+
+enum TenantKindV1 {
+  PA = 1;
+  GSP = 2;
+  PRIVATE = 3;
+}
+
+enum TenantUnitTypeV1 {
+  AOO = 1;
+  UO = 2;
+}
+
+message TenantFeatureV1 {
+  oneof sealed_value {
+    CertifierV1 certifier = 1;
+  }
+}
+
+message CertifierV1 {
+  required string certifierId = 1;
+}
+
+message TenantVerifierV1 {
+  reserved 3;
+  required string id = 1;
+  required int64 verificationDate = 2;
+  optional int64 expirationDate = 4;
+  optional int64 extensionDate = 5;
+}
+
+message TenantRevokerV1 {
+  reserved 3;
+  required string id = 1;
+  required int64 verificationDate = 2;
+  optional int64 expirationDate = 4;
+  optional int64 extensionDate = 5;
+  required int64 revocationDate = 6;
+}
+
+message ExternalIdV1 {
+  required string origin = 1;
+  required string value = 2;
+}
