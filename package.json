@@ -9,11 +9,12 @@
     ".": "./dist/index.js"
   },
   "scripts": {
+    "postinstall": "pnpm run generate-protobuf",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:autofix": "eslint . --ext .ts,.tsx --fix",
     "format:check": "prettier --check src",
     "format:write": "prettier --write src",
-    "build": "pnpm generate-protobuf & tsc",
+    "build": "tsc",
     "check": "tsc --project tsconfig.check.json",
     "generate-protobuf": "mkdirp ./src/gen && npx protoc --ts_opt=eslint_disable --ts_out ./src/gen --proto_path ./proto ./proto/**/**/*.proto && tsc-esm-fix --src='src/gen/' --ext='.js'"
   },
