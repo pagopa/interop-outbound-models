@@ -4,14 +4,14 @@ import { EventEnvelope, eventV1, eventV2 } from "../events.js";
 import { EServiceEventV1, eServiceEventToBinaryDataV1 } from "./eventsV1.js";
 import { EServiceEventV2, eServiceEventToBinaryDataV2 } from "./eventsV2.js";
 
-function eServiceEventToBinaryData(event: EServiceEvent): Uint8Array {
+export function eServiceEventToBinaryData(event: EServiceEvent): Uint8Array {
   return match(event)
     .with({ event_version: 1 }, eServiceEventToBinaryDataV1)
     .with({ event_version: 2 }, eServiceEventToBinaryDataV2)
     .exhaustive();
 }
 
-const EServiceEvent = z
+export const EServiceEvent = z
   .discriminatedUnion("event_version", [eventV1, eventV2])
   .transform((obj, ctx) => {
     const res = match(obj)
@@ -26,23 +26,13 @@ const EServiceEvent = z
     return res.data;
   });
 
-type EServiceEvent = z.infer<typeof EServiceEvent>;
+export type EServiceEvent = z.infer<typeof EServiceEvent>;
 
-const EServiceEventEnvelopeV1 = EventEnvelope(EServiceEventV1);
-type EServiceEventEnvelopeV1 = z.infer<typeof EServiceEventEnvelopeV1>;
+export const EServiceEventEnvelopeV1 = EventEnvelope(EServiceEventV1);
+export type EServiceEventEnvelopeV1 = z.infer<typeof EServiceEventEnvelopeV1>;
 
-const EServiceEventEnvelopeV2 = EventEnvelope(EServiceEventV2);
-type EServiceEventEnvelopeV2 = z.infer<typeof EServiceEventEnvelopeV2>;
+export const EServiceEventEnvelopeV2 = EventEnvelope(EServiceEventV2);
+export type EServiceEventEnvelopeV2 = z.infer<typeof EServiceEventEnvelopeV2>;
 
-const EServiceEventEnvelope = EventEnvelope(EServiceEvent);
-type EServiceEventEnvelope = z.infer<typeof EServiceEventEnvelope>;
-
-export {
-  eServiceEventToBinaryData,
-  EServiceEvent,
-  EServiceEventV1,
-  EServiceEventV2,
-  EServiceEventEnvelope,
-  EServiceEventEnvelopeV1,
-  EServiceEventEnvelopeV2,
-};
+export const EServiceEventEnvelope = EventEnvelope(EServiceEvent);
+export type EServiceEventEnvelope = z.infer<typeof EServiceEventEnvelope>;

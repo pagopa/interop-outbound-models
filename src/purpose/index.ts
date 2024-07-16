@@ -4,14 +4,14 @@ import { EventEnvelope, eventV1, eventV2 } from "../events.js";
 import { PurposeEventV1, purposeEventToBinaryDataV1 } from "./eventsV1.js";
 import { PurposeEventV2, purposeEventToBinaryDataV2 } from "./eventsV2.js";
 
-function purposeEventToBinaryData(event: PurposeEvent): Uint8Array {
+export function purposeEventToBinaryData(event: PurposeEvent): Uint8Array {
   return match(event)
     .with({ event_version: 1 }, purposeEventToBinaryDataV1)
     .with({ event_version: 2 }, purposeEventToBinaryDataV2)
     .exhaustive();
 }
 
-const PurposeEvent = z
+export const PurposeEvent = z
   .discriminatedUnion("event_version", [eventV1, eventV2])
   .transform((obj, ctx) => {
     const res = match(obj)
@@ -25,23 +25,13 @@ const PurposeEvent = z
     }
     return res.data;
   });
-type PurposeEvent = z.infer<typeof PurposeEvent>;
+export type PurposeEvent = z.infer<typeof PurposeEvent>;
 
-const PurposeEventEnvelopeV1 = EventEnvelope(PurposeEventV1);
-type PurposeEventEnvelopeV1 = z.infer<typeof PurposeEventEnvelopeV1>;
+export const PurposeEventEnvelopeV1 = EventEnvelope(PurposeEventV1);
+export type PurposeEventEnvelopeV1 = z.infer<typeof PurposeEventEnvelopeV1>;
 
-const PurposeEventEnvelopeV2 = EventEnvelope(PurposeEventV2);
-type PurposeEventEnvelopeV2 = z.infer<typeof PurposeEventEnvelopeV2>;
+export const PurposeEventEnvelopeV2 = EventEnvelope(PurposeEventV2);
+export type PurposeEventEnvelopeV2 = z.infer<typeof PurposeEventEnvelopeV2>;
 
-const PurposeEventEnvelope = EventEnvelope(PurposeEvent);
-type PurposeEventEnvelope = z.infer<typeof PurposeEventEnvelope>;
-
-export {
-  purposeEventToBinaryData,
-  PurposeEvent,
-  PurposeEventV1,
-  PurposeEventV2,
-  PurposeEventEnvelope,
-  PurposeEventEnvelopeV1,
-  PurposeEventEnvelopeV2,
-};
+export const PurposeEventEnvelope = EventEnvelope(PurposeEvent);
+export type PurposeEventEnvelope = z.infer<typeof PurposeEventEnvelope>;

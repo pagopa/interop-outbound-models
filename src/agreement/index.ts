@@ -4,14 +4,14 @@ import { EventEnvelope, eventV1, eventV2 } from "../events.js";
 import { AgreementEventV1, agreementEventToBinaryDataV1 } from "./eventsV1.js";
 import { AgreementEventV2, agreementEventToBinaryDataV2 } from "./eventsV2.js";
 
-function agreementEventToBinaryData(event: AgreementEvent): Uint8Array {
+export function agreementEventToBinaryData(event: AgreementEvent): Uint8Array {
   return match(event)
     .with({ event_version: 1 }, agreementEventToBinaryDataV1)
     .with({ event_version: 2 }, agreementEventToBinaryDataV2)
     .exhaustive();
 }
 
-const AgreementEvent = z
+export const AgreementEvent = z
   .discriminatedUnion("event_version", [eventV1, eventV2])
   .transform((obj, ctx) => {
     const res = match(obj)
@@ -26,23 +26,13 @@ const AgreementEvent = z
     return res.data;
   });
 
-type AgreementEvent = z.infer<typeof AgreementEvent>;
+export type AgreementEvent = z.infer<typeof AgreementEvent>;
 
-const AgreementEventEnvelopeV1 = EventEnvelope(AgreementEventV1);
-type AgreementEventEnvelopeV1 = z.infer<typeof AgreementEventEnvelopeV1>;
+export const AgreementEventEnvelopeV1 = EventEnvelope(AgreementEventV1);
+export type AgreementEventEnvelopeV1 = z.infer<typeof AgreementEventEnvelopeV1>;
 
-const AgreementEventEnvelopeV2 = EventEnvelope(AgreementEventV2);
-type AgreementEventEnvelopeV2 = z.infer<typeof AgreementEventEnvelopeV2>;
+export const AgreementEventEnvelopeV2 = EventEnvelope(AgreementEventV2);
+export type AgreementEventEnvelopeV2 = z.infer<typeof AgreementEventEnvelopeV2>;
 
-const AgreementEventEnvelope = EventEnvelope(AgreementEvent);
-type AgreementEventEnvelope = z.infer<typeof AgreementEventEnvelope>;
-
-export {
-  agreementEventToBinaryData,
-  AgreementEvent,
-  AgreementEventV1,
-  AgreementEventV2,
-  AgreementEventEnvelope,
-  AgreementEventEnvelopeV1,
-  AgreementEventEnvelopeV2,
-};
+export const AgreementEventEnvelope = EventEnvelope(AgreementEvent);
+export type AgreementEventEnvelope = z.infer<typeof AgreementEventEnvelope>;

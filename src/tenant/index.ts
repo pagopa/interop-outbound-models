@@ -4,14 +4,14 @@ import { EventEnvelope, eventV1, eventV2 } from "../events.js";
 import { TenantEventV1, tenantEventToBinaryDataV1 } from "./eventsV1.js";
 import { TenantEventV2, tenantEventToBinaryDataV2 } from "./eventsV2.js";
 
-function tenantEventToBinaryData(event: TenantEvent): Uint8Array {
+export function tenantEventToBinaryData(event: TenantEvent): Uint8Array {
   return match(event)
     .with({ event_version: 1 }, tenantEventToBinaryDataV1)
     .with({ event_version: 2 }, tenantEventToBinaryDataV2)
     .exhaustive();
 }
 
-const TenantEvent = z
+export const TenantEvent = z
   .discriminatedUnion("event_version", [eventV1, eventV2])
   .transform((obj, ctx) => {
     const res = match(obj)
@@ -26,23 +26,13 @@ const TenantEvent = z
     return res.data;
   });
 
-type TenantEvent = z.infer<typeof TenantEvent>;
+export type TenantEvent = z.infer<typeof TenantEvent>;
 
-const TenantEventEnvelopeV1 = EventEnvelope(TenantEventV1);
-type TenantEventEnvelopeV1 = z.infer<typeof TenantEventEnvelopeV1>;
+export const TenantEventEnvelopeV1 = EventEnvelope(TenantEventV1);
+export type TenantEventEnvelopeV1 = z.infer<typeof TenantEventEnvelopeV1>;
 
-const TenantEventEnvelopeV2 = EventEnvelope(TenantEventV2);
-type TenantEventEnvelopeV2 = z.infer<typeof TenantEventEnvelopeV2>;
+export const TenantEventEnvelopeV2 = EventEnvelope(TenantEventV2);
+export type TenantEventEnvelopeV2 = z.infer<typeof TenantEventEnvelopeV2>;
 
-const TenantEventEnvelope = EventEnvelope(TenantEvent);
-type TenantEventEnvelope = z.infer<typeof TenantEventEnvelope>;
-
-export {
-  tenantEventToBinaryData,
-  TenantEvent,
-  TenantEventV1,
-  TenantEventV2,
-  TenantEventEnvelope,
-  TenantEventEnvelopeV1,
-  TenantEventEnvelopeV2,
-};
+export const TenantEventEnvelope = EventEnvelope(TenantEvent);
+export type TenantEventEnvelope = z.infer<typeof TenantEventEnvelope>;

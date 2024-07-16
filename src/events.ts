@@ -18,30 +18,6 @@ export type EventEnvelope<TEvent> = z.infer<
   ReturnType<typeof EventEnvelope<z.ZodType<TEvent>>>
 >;
 
-export const DebeziumCreatePayload = <TEventZodType extends z.ZodType>(
-  event: TEventZodType
-) =>
-  z.object({
-    op: z.enum(["c", "r"]),
-    after: EventEnvelope(event),
-  });
-export type DebeziumCreatePayload<TEvent> = z.infer<
-  ReturnType<typeof DebeziumCreatePayload<z.ZodType<TEvent>>>
->;
-
-export const Message = <TEventZodType extends z.ZodType>(
-  event: TEventZodType
-) =>
-  z.object({
-    value: z.preprocess(
-      (v) => (v != null ? JSON.parse(v.toString()) : null),
-      DebeziumCreatePayload(EventEnvelope(event))
-    ),
-  });
-export type Message<TEvent> = z.infer<
-  ReturnType<typeof Message<z.ZodType<TEvent>>>
->;
-
 export const eventV1 = z
   .object({
     event_version: z.literal(1),
