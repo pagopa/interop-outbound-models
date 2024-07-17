@@ -26,8 +26,6 @@ message AgreementV2 {
 }
 
 message VerifiedAttributeV2 {
-  reserved 2, 3, 4, 5;
-
   string id = 1;
 }
 
