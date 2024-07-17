@@ -1,4 +1,4 @@
-name: CI
+name: PR build
 on:
   push:
     branches: main
