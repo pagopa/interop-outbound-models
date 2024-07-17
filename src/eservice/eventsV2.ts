@@ -19,10 +19,7 @@ import {
   EServiceDescriptorSuspendedV2,
   EServiceDraftDescriptorDeletedV2,
   EServiceDraftDescriptorUpdatedV2,
-  EServiceRiskAnalysisAddedV2,
   EServiceDescriptorQuotasUpdatedV2,
-  EServiceRiskAnalysisUpdatedV2,
-  EServiceRiskAnalysisDeletedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -82,15 +79,6 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceDescriptorDocumentDeleted" }, ({ data }) =>
       EServiceDescriptorDocumentDeletedV2.toBinary(data)
-    )
-    .with({ type: "EServiceRiskAnalysisAdded" }, ({ data }) =>
-      EServiceRiskAnalysisAddedV2.toBinary(data)
-    )
-    .with({ type: "EServiceRiskAnalysisUpdated" }, ({ data }) =>
-      EServiceRiskAnalysisUpdatedV2.toBinary(data)
-    )
-    .with({ type: "EServiceRiskAnalysisDeleted" }, ({ data }) =>
-      EServiceRiskAnalysisDeletedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -185,21 +173,6 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceDescriptorDocumentDeleted"),
     data: protobufDecoder(EServiceDescriptorDocumentDeletedV2),
-  }),
-  z.object({
-    event_version: z.literal(2),
-    type: z.literal("EServiceRiskAnalysisAdded"),
-    data: protobufDecoder(EServiceRiskAnalysisAddedV2),
-  }),
-  z.object({
-    event_version: z.literal(2),
-    type: z.literal("EServiceRiskAnalysisUpdated"),
-    data: protobufDecoder(EServiceRiskAnalysisUpdatedV2),
-  }),
-  z.object({
-    event_version: z.literal(2),
-    type: z.literal("EServiceRiskAnalysisDeleted"),
-    data: protobufDecoder(EServiceRiskAnalysisDeletedV2),
   }),
 ]);
 
