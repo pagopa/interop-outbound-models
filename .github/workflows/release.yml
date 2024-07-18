@@ -1,0 +1,35 @@
+name: Publish package to GitHub Packages
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "CODEOWNERS"
+      - "**.md"
+      - ".**"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@pagopa"
+
+      - uses: pnpm/action-setup@v2
+
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.BOT_TOKEN }}

@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+package purpose;
+
+message PurposeV1 {
+  required string id = 1;
+  required string eserviceId = 2;
+  required string consumerId = 3;
+  optional bool suspendedByConsumer = 5;
+  optional bool suspendedByProducer = 6;
+  repeated PurposeVersionV1 versions = 7;
+  required string title = 8;
+  required string description = 9;
+  required int64 createdAt = 10;
+  optional int64 updatedAt = 11;
+  optional bool isFreeOfCharge = 12;
+  optional string freeOfChargeReason = 13;
+}
+
+message PurposeVersionV1 {
+  required string id = 1;
+  required PurposeStateV1 state = 2;
+  required int32 dailyCalls = 3;
+  required int64 createdAt = 4;
+  optional int64 updatedAt = 5;
+  optional int64 firstActivationAt = 6;
+  optional int64 expectedApprovalDate = 7;
+  optional int64 suspendedAt = 8;
+  optional string rejectionReason = 9;
+}
+
+enum PurposeStateV1 {
+  DRAFT = 1;
+  ACTIVE = 2;
+  SUSPENDED = 3;
+  WAITING_FOR_APPROVAL = 4;
+  ARCHIVED = 5;
+  REJECTED = 6;
+}
