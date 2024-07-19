@@ -36,7 +36,6 @@
     "@protobuf-ts/plugin": "2.9.4",
     "@protobuf-ts/runtime": "2.9.4",
     "@tsconfig/node-lts": "20.1.3",
-    "@pagopa/eslint-config": "3.0.0"
   },
   "config": {
     "protocVersion": "26.1"
