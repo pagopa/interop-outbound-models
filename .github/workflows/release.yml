@@ -26,6 +26,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           always-auth: true
 
+      - uses: pnpm/action-setup@v2
+
       - run: pnpm i --frozen-lockfile
       - run: pnpm build
 
