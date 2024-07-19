@@ -1,5 +1,5 @@
 {
-  "name": "pagopa-interop-outbound-models",
+  "name": "@pagopa/interop-outbound-models",
   "version": "1.0.0",
   "private": true,
   "description": "PagoPA Interoperability outbound models",
@@ -40,6 +40,9 @@
   },
   "config": {
     "protocVersion": "26.1"
+  },
+  "publishConfig": {
+    "@pagopa:registry": "https://npm.pkg.github.com"
   },
   "packageManager": "pnpm@8.15.8"
 }
