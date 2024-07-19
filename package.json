@@ -41,8 +41,5 @@
   "config": {
     "protocVersion": "26.1"
   },
-  "publishConfig": {
-    "@pagopa:registry": "https://npm.pkg.github.com"
-  },
   "packageManager": "pnpm@8.15.8"
 }
