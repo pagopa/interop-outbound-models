@@ -13,7 +13,7 @@ import {
   MaintenanceTenantDeletedV2,
   TenantVerifiedAttributeExtensionUpdatedV2,
 } from "../gen/v2/tenant/events.js";
-import { protobufDecoder } from "../protobuf.js";
+import { protobufDecoder } from "../utils.js";
 
 export function tenantEventToBinaryDataV2(event: TenantEventV2): Uint8Array {
   return match(event)
@@ -58,56 +58,89 @@ export const TenantEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("TenantOnboarded"),
     data: protobufDecoder(TenantOnboardedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantOnboardDetailsUpdated"),
     data: protobufDecoder(TenantOnboardDetailsUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantCertifiedAttributeAssigned"),
     data: protobufDecoder(TenantCertifiedAttributeAssignedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantCertifiedAttributeRevoked"),
     data: protobufDecoder(TenantCertifiedAttributeRevokedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantDeclaredAttributeAssigned"),
     data: protobufDecoder(TenantDeclaredAttributeAssignedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantDeclaredAttributeRevoked"),
     data: protobufDecoder(TenantDeclaredAttributeRevokedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantVerifiedAttributeAssigned"),
     data: protobufDecoder(TenantVerifiedAttributeAssignedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantVerifiedAttributeRevoked"),
     data: protobufDecoder(TenantVerifiedAttributeRevokedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantVerifiedAttributeExpirationUpdated"),
     data: protobufDecoder(TenantVerifiedAttributeExpirationUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("TenantVerifiedAttributeExtensionUpdated"),
     data: protobufDecoder(TenantVerifiedAttributeExtensionUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
     type: z.literal("MaintenanceTenantDeleted"),
     data: protobufDecoder(MaintenanceTenantDeletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
 ]);
 
