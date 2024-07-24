@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@protobuf-ts/runtime':
+    specifier: 2.9.4
+    version: 2.9.4
   ts-pattern:
     specifier: 5.2.0
     version: 5.2.0
@@ -20,9 +23,6 @@ devDependencies:
     specifier: 2.9.4
     version: 2.9.4
   '@protobuf-ts/protoc':
-    specifier: 2.9.4
-    version: 2.9.4
-  '@protobuf-ts/runtime':
     specifier: 2.9.4
     version: 2.9.4
   '@tsconfig/node-lts':
@@ -442,7 +442,6 @@ packages:
 
   /@protobuf-ts/runtime@2.9.4:
     resolution: {integrity: sha512-vHRFWtJJB/SiogWDF0ypoKfRIZ41Kq+G9cEFj6Qm1eQaAhJ1LDFvgZ7Ja4tb3iLOQhz0PaoPnnOijF1qmEqTxg==}
-    dev: true
 
   /@rollup/rollup-android-arm-eabi@4.19.0:
     resolution: {integrity: sha512-JlPfZ/C7yn5S5p0yKk7uhHTTnFlvTgLetl2VxqE518QgyM7C9bSfFTYvB/Q/ftkq0RIPY4ySxTz+/wKJ/dXC0w==}
