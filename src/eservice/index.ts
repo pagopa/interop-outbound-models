@@ -18,7 +18,7 @@ export function encodeOutboundEServiceEvent(event: EServiceEvent): string {
     data: eServiceEventToBinaryData(event),
     stream_id: event.stream_id,
     version: event.version,
-    timestamp: new Date(),
+    timestamp: event.timestamp,
   });
 }
 

@@ -18,7 +18,7 @@ export function encodeOutboundPurposeEvent(event: PurposeEvent): string {
     data: purposeEventToBinaryData(event),
     stream_id: event.stream_id,
     version: event.version,
-    timestamp: new Date(),
+    timestamp: event.timestamp,
   });
 }
 

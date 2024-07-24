@@ -18,7 +18,7 @@ export function encodeOutboundAgreementEvent(event: AgreementEvent): string {
     data: agreementEventToBinaryData(event),
     stream_id: event.stream_id,
     version: event.version,
-    timestamp: new Date(),
+    timestamp: event.timestamp,
   });
 }
 

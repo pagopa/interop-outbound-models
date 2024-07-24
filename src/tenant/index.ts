@@ -18,7 +18,7 @@ export function encodeOutboundTenantEvent(event: TenantEvent): string {
     data: tenantEventToBinaryData(event),
     stream_id: event.stream_id,
     version: event.version,
-    timestamp: new Date(),
+    timestamp: event.timestamp,
   });
 }
 

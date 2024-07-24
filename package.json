@@ -8,6 +8,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
+    "test": "vitest run",
     "postinstall": "pnpm run generate-protobuf",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:autofix": "eslint . --ext .ts,.tsx --fix",
@@ -22,10 +23,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ts-pattern": "5.2.0",
-    "vitest": "^2.0.4",
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "vitest": "^2.0.4",
     "@protobuf-ts/plugin": "2.9.4",
     "@protobuf-ts/protoc": "2.9.4",
     "@protobuf-ts/runtime": "2.9.4",
