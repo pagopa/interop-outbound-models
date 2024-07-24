@@ -9,7 +9,6 @@
   },
   "scripts": {
     "test": "vitest run",
-    "postinstall": "pnpm run generate-protobuf",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:autofix": "eslint . --ext .ts,.tsx --fix",
     "format:check": "prettier --check src",
