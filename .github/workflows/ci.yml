@@ -14,6 +14,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm format:check
 
   lint:
@@ -27,6 +28,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm lint
 
   check:
@@ -40,6 +42,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm check
 
   test:
@@ -53,6 +56,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm test
 
   build:
@@ -66,4 +70,5 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm build
