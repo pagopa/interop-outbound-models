@@ -12,6 +12,7 @@ import {
   TenantVerifiedAttributeExpirationUpdatedV2,
   MaintenanceTenantDeletedV2,
   TenantVerifiedAttributeExtensionUpdatedV2,
+  TenantKindUpdatedV2,
 } from "../gen/v2/tenant/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -49,6 +50,9 @@ export function tenantEventToBinaryDataV2(event: TenantEventV2): Uint8Array {
     )
     .with({ type: "MaintenanceTenantDeleted" }, ({ data }) =>
       MaintenanceTenantDeletedV2.toBinary(data)
+    )
+    .with({ type: "TenantKindUpdated" }, ({ data }) =>
+      TenantKindUpdatedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -138,6 +142,14 @@ export const TenantEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("MaintenanceTenantDeleted"),
     data: protobufDecoder(MaintenanceTenantDeletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantKindUpdated"),
+    data: protobufDecoder(TenantKindUpdatedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
