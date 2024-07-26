@@ -40,3 +40,4 @@ export const TenantEvent = VersionedEvent.transform((obj, ctx) => {
 });
 
 export type TenantEvent = z.infer<typeof TenantEvent>;
+export { TenantEventV1, TenantEventV2 };

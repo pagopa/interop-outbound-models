@@ -42,3 +42,4 @@ export const EServiceEvent = VersionedEvent.transform((obj, ctx) => {
 });
 
 export type EServiceEvent = z.infer<typeof EServiceEvent>;
+export { EServiceEventV1, EServiceEventV2 };

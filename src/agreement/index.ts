@@ -42,3 +42,4 @@ export const AgreementEvent = VersionedEvent.transform((obj, ctx) => {
 });
 
 export type AgreementEvent = z.infer<typeof AgreementEvent>;
+export { AgreementEventV1, AgreementEventV2 };

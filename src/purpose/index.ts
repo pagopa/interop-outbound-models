@@ -39,3 +39,4 @@ export const PurposeEvent = VersionedEvent.transform((obj, ctx) => {
   return res.data;
 });
 export type PurposeEvent = z.infer<typeof PurposeEvent>;
+export { PurposeEventV1, PurposeEventV2 };
