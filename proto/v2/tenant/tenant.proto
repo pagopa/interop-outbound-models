@@ -14,7 +14,6 @@ message TenantV2 {
   optional TenantKindV2 kind = 9;
   int64 onboardedAt = 10;
   optional TenantUnitTypeV2 subUnitType = 11;
-
 }
 
 enum TenantKindV2 {

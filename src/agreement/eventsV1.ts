@@ -12,7 +12,7 @@ import {
   AgreementDeactivatedV1,
   VerifiedAttributeUpdatedV1,
 } from "../gen/v1/agreement/events.js";
-import { protobufDecoder } from "../protobuf.js";
+import { protobufDecoder } from "../utils.js";
 
 export function agreementEventToBinaryDataV1(
   event: AgreementEventV1
@@ -56,51 +56,81 @@ export const AgreementEventV1 = z.discriminatedUnion("type", [
     event_version: z.literal(1),
     type: z.literal("AgreementAdded"),
     data: protobufDecoder(AgreementAddedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementActivated"),
     data: protobufDecoder(AgreementActivatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementSuspended"),
     data: protobufDecoder(AgreementSuspendedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementDeactivated"),
     data: protobufDecoder(AgreementDeactivatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementDeleted"),
     data: protobufDecoder(AgreementDeletedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("VerifiedAttributeUpdated"),
     data: protobufDecoder(VerifiedAttributeUpdatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementUpdated"),
     data: protobufDecoder(AgreementUpdatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementConsumerDocumentAdded"),
     data: protobufDecoder(AgreementConsumerDocumentAddedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementConsumerDocumentRemoved"),
     data: protobufDecoder(AgreementConsumerDocumentRemovedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("AgreementContractAdded"),
     data: protobufDecoder(AgreementContractAddedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
 ]);
 export type AgreementEventV1 = z.infer<typeof AgreementEventV1>;

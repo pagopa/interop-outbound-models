@@ -1,4 +1,4 @@
-name: PR build
+name: CI
 on:
   pull_request:
 
@@ -14,6 +14,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm format:check
 
   lint:
@@ -27,6 +28,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm lint
 
   check:
@@ -40,7 +42,22 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm check
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4
+        with:
+          node-version-file: ./package.json
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: true
+      - run: pnpm generate-protobuf
+      - run: pnpm test
 
   build:
     name: Build
@@ -53,4 +70,5 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - run: pnpm generate-protobuf
       - run: pnpm build

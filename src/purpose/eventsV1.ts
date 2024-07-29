@@ -13,7 +13,7 @@ import {
   PurposeVersionUpdatedV1,
   PurposeVersionWaitedForApprovalV1,
 } from "../gen/v1/purpose/events.js";
-import { protobufDecoder } from "../protobuf.js";
+import { protobufDecoder } from "../utils.js";
 
 export function purposeEventToBinaryDataV1(event: PurposeEventV1): Uint8Array {
   return match(event)
@@ -58,56 +58,89 @@ export const PurposeEventV1 = z.discriminatedUnion("type", [
     event_version: z.literal(1),
     type: z.literal("PurposeCreated"),
     data: protobufDecoder(PurposeCreatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeUpdated"),
     data: protobufDecoder(PurposeUpdatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionWaitedForApproval"),
     data: protobufDecoder(PurposeVersionWaitedForApprovalV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionActivated"),
     data: protobufDecoder(PurposeVersionActivatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionCreated"),
     data: protobufDecoder(PurposeVersionCreatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionSuspended"),
     data: protobufDecoder(PurposeVersionSuspendedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionArchived"),
     data: protobufDecoder(PurposeVersionArchivedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionUpdated"),
     data: protobufDecoder(PurposeVersionUpdatedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionDeleted"),
     data: protobufDecoder(PurposeVersionDeletedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeDeleted"),
     data: protobufDecoder(PurposeDeletedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(1),
     type: z.literal("PurposeVersionRejected"),
     data: protobufDecoder(PurposeVersionRejectedV1),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
   }),
 ]);
 export type PurposeEventV1 = z.infer<typeof PurposeEventV1>;
