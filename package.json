@@ -19,6 +19,9 @@
   },
   "keywords": [],
   "author": "",
+  "repository": {
+    "url": "https://github.com/pagopa/interop-outbound-models"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "ts-pattern": "5.2.0",
