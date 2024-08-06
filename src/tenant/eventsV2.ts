@@ -161,7 +161,7 @@ export const TenantEventV2 = z.discriminatedUnion("type", [
   z.object({
     event_version: z.literal(2),
     type: z.literal("MaintenanceTenantPromotedToCertifier"),
-    data: protobufDecoder(TenantKindUpdatedV2),
+    data: protobufDecoder(MaintenanceTenantPromotedToCertifierV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
