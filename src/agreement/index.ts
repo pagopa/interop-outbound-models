@@ -41,5 +41,6 @@ export const AgreementEvent = VersionedEvent.transform((obj, ctx) => {
   return res.data;
 });
 
+export type AgreementEventType = AgreementEvent["type"];
 export type AgreementEvent = z.infer<typeof AgreementEvent>;
 export { AgreementEventV1, AgreementEventV2 };
