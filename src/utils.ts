@@ -17,9 +17,5 @@ export const VersionedEvent = z.discriminatedUnion("event_version", [
 export function protobufDecoder<I extends object>(
   decoder: MessageType<I>
 ): ZodTransformer<ZodAny, I> {
-  return z
-    .any()
-    .transform((v) =>
-      decoder.fromBinary(Buffer.from(Object.values(v) as never, "hex"))
-    );
+  return z.any().transform((v) => decoder.fromBinary(Buffer.from(v, "hex")));
 }

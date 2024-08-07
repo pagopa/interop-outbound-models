@@ -15,7 +15,7 @@ export function encodeOutboundTenantEvent(event: TenantEvent): string {
   return JSON.stringify({
     event_version: event.event_version,
     type: event.type,
-    data: tenantEventToBinaryData(event),
+    data: Buffer.from(tenantEventToBinaryData(event)).toString("hex"),
     stream_id: event.stream_id,
     version: event.version,
     timestamp: event.timestamp,
