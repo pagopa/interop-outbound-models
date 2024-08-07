@@ -15,7 +15,7 @@ export function encodeOutboundEServiceEvent(event: EServiceEvent): string {
   return JSON.stringify({
     event_version: event.event_version,
     type: event.type,
-    data: eServiceEventToBinaryData(event),
+    data: Buffer.from(eServiceEventToBinaryData(event)).toString("hex"),
     stream_id: event.stream_id,
     version: event.version,
     timestamp: event.timestamp,
