@@ -21,6 +21,8 @@ import {
   EServiceDraftDescriptorUpdatedV2,
   EServiceDescriptorQuotasUpdatedV2,
   EServiceDescriptionUpdatedV2,
+  EServiceDelegationAssignedV2,
+  EServiceDelegationRevokedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -82,6 +84,12 @@ export function eServiceEventToBinaryDataV2(
       EServiceDescriptorDocumentDeletedV2.toBinary(data)
     )
     .with({ type: "EServiceDescriptionUpdated" }, ({ data }) =>
+      EServiceDescriptionUpdatedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDelegationAssigned" }, ({ data }) =>
+      EServiceDescriptionUpdatedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDelegationRevoked" }, ({ data }) =>
       EServiceDescriptionUpdatedV2.toBinary(data)
     )
     .exhaustive();
@@ -236,6 +244,22 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceDescriptionUpdated"),
     data: protobufDecoder(EServiceDescriptionUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDelegationAssigned"),
+    data: protobufDecoder(EServiceDelegationAssignedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDelegationRevoked"),
+    data: protobufDecoder(EServiceDelegationRevokedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
