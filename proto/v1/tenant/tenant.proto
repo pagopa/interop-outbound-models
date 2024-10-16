@@ -20,6 +20,7 @@ enum TenantKindV1 {
   PA = 1;
   GSP = 2;
   PRIVATE = 3;
+  SCP = 4;
 }
 
 enum TenantUnitTypeV1 {
