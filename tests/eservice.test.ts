@@ -10,7 +10,7 @@ import {
 } from "../src/index.js";
 
 describe("eservice", () => {
-  it("should correctly encode and decode EServiceDeleted event", () => {
+  it("should correctly encode and decode EServiceDescriptorArchived event", () => {
     const event: EServiceEvent = {
       event_version: 2,
       type: "EServiceDescriptorArchived",
