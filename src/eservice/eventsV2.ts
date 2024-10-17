@@ -23,7 +23,7 @@ import {
   EServiceDescriptionUpdatedV2,
   EServiceDescriptorDelegateSubmittedV2,
   EServiceDescriptorDelegatorApprovedV2,
-  EServiceDescriptorDelegatorRejectedV2
+  EServiceDescriptorDelegatorRejectedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
