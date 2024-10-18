@@ -42,7 +42,7 @@ describe("eservice", () => {
                 verified: [],
                 declared: [],
               },
-              rejectedReasons: [],
+              rejectionReasons: [],
             },
           ],
         },
