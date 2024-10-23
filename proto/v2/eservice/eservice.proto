@@ -11,6 +11,7 @@ message EServiceV2 {
   repeated EServiceDescriptorV2 descriptors = 6;
   int64 createdAt = 7;
   EServiceModeV2 mode = 8;
+  optional bool isSignalHubEnabled = 9;
 }
 
 message EServiceAttributeValueV2 {
