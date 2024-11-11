@@ -16,6 +16,8 @@ import {
   MaintenanceTenantPromotedToCertifierV2,
   TenantDelegatedProducerFeatureAddedV2,
   TenantDelegatedProducerFeatureRemovedV2,
+  TenantDelegatedConsumerFeatureAddedV2,
+  TenantDelegatedConsumerFeatureRemovedV2,
 } from "../gen/v2/tenant/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -65,6 +67,12 @@ export function tenantEventToBinaryDataV2(event: TenantEventV2): Uint8Array {
     )
     .with({ type: "TenantDelegatedProducerFeatureRemoved" }, ({ data }) =>
       TenantDelegatedProducerFeatureRemovedV2.toBinary(data)
+    )
+    .with({ type: "TenantDelegatedConsumerFeatureAdded" }, ({ data }) =>
+      TenantDelegatedConsumerFeatureAddedV2.toBinary(data)
+    )
+    .with({ type: "TenantDelegatedConsumerFeatureRemoved" }, ({ data }) =>
+      TenantDelegatedConsumerFeatureRemovedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -186,6 +194,22 @@ export const TenantEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("TenantDelegatedProducerFeatureRemoved"),
     data: protobufDecoder(TenantDelegatedProducerFeatureRemovedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantDelegatedConsumerFeatureAdded"),
+    data: protobufDecoder(TenantDelegatedConsumerFeatureAddedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantDelegatedConsumerFeatureRemoved"),
+    data: protobufDecoder(TenantDelegatedConsumerFeatureRemovedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
