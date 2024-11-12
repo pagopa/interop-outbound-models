@@ -12,6 +12,8 @@ message EServiceV2 {
   int64 createdAt = 7;
   EServiceModeV2 mode = 8;
   optional bool isSignalHubEnabled = 9;
+  optional bool isDelegable = 10;
+  optional bool isClientAccessDelegable = 11;
 }
 
 message EServiceAttributeValueV2 {
@@ -27,6 +29,11 @@ message EServiceAttributesV2 {
   repeated EServiceAttributeV2 certified = 1;
   repeated EServiceAttributeV2 declared = 2;
   repeated EServiceAttributeV2 verified = 3;
+}
+
+message DescriptorRejectionReasonV2 {
+  string rejectionReason = 1;
+  int64 rejectedAt = 2;
 }
 
 message EServiceDescriptorV2 {
@@ -48,6 +55,7 @@ message EServiceDescriptorV2 {
   optional int64 deprecatedAt = 16;
   optional int64 archivedAt = 17;
   EServiceAttributesV2 attributes = 18;
+  repeated DescriptorRejectionReasonV2 rejectionReasons = 19;
 }
 
 message EServiceDocumentV2 {
@@ -65,6 +73,7 @@ enum EServiceDescriptorStateV2 {
   DEPRECATED = 2;
   SUSPENDED = 3;
   ARCHIVED = 4;
+  WAITING_FOR_APPROVAL = 5;
 }
 
 enum EServiceTechnologyV2 {
