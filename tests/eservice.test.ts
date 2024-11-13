@@ -42,7 +42,6 @@ describe("eservice", () => {
                 verified: [],
                 declared: [],
               },
-              rejectionReasons: [],
             },
           ],
         },
