@@ -69,3 +69,11 @@ message TenantKindUpdatedV2 {
   optional TenantKindV2 oldKind = 1;
   TenantV2 tenant = 2;
 }
+
+message TenantDelegatedProducerFeatureAddedV2 {
+  TenantV2 tenant = 1;
+}
+
+message TenantDelegatedProducerFeatureRemovedV2 {
+  TenantV2 tenant = 1;
+}
