@@ -12,6 +12,8 @@ message EServiceV2 {
   int64 createdAt = 7;
   EServiceModeV2 mode = 8;
   optional bool isSignalHubEnabled = 9;
+  optional bool isDelegable = 10;
+  optional bool isClientAccessDelegable = 11;
 }
 
 message EServiceAttributeValueV2 {
