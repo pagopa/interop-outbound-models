@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/interop-outbound-models",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "PagoPA Interoperability outbound models",
   "main": "dist",
   "type": "module",
