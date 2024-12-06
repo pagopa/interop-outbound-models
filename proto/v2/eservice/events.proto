@@ -102,3 +102,9 @@ message EServiceDescriptorDocumentDeletedV2 {
 message EServiceDescriptionUpdatedV2 {
     EServiceV2 eservice = 1;
 }
+
+message EServiceDescriptorAttributesUpdatedV2 {
+  string descriptorId = 1;
+  repeated string attributeIds = 2;
+  EServiceV2 eservice = 3;
+}
