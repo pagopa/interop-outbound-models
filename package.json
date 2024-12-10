@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/interop-outbound-models",
-  "version": "1.0.12b",
+  "version": "1.0.12c",
   "description": "PagoPA Interoperability outbound models",
   "main": "dist",
   "type": "module",
@@ -44,5 +44,5 @@
   "config": {
     "protocVersion": "26.1"
   },
-  "packageManager": "pnpm@8.15.8"
+  "packageManager": "pnpm@9.12.3"
 }
