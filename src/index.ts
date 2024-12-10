@@ -2,6 +2,7 @@ export * from "./eservice/index.js";
 export * from "./agreement/index.js";
 export * from "./purpose/index.js";
 export * from "./tenant/index.js";
+export * from "./delegation/index.js";
 
 export * from "./gen/v1/agreement/agreement.js";
 export * from "./gen/v1/agreement/events.js";
