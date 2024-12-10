@@ -24,6 +24,10 @@ import {
   EServiceDescriptorDelegateSubmittedV2,
   EServiceDescriptorDelegatorApprovedV2,
   EServiceDescriptorDelegatorRejectedV2,
+  EServiceIsClientAccessDelegableDisabledV2,
+  EServiceIsClientAccessDelegableEnabledV2,
+  EServiceIsDelegableDisabledV2,
+  EServiceIsDelegableEnabledV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -95,6 +99,18 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceDescriptorDelegatorRejected" }, ({ data }) =>
       EServiceDescriptorDelegatorRejectedV2.toBinary(data)
+    )
+    .with({ type: "EServiceIsDelegableEnabled" }, ({ data }) =>
+      EServiceIsDelegableEnabledV2.toBinary(data)
+    )
+    .with({ type: "EServiceIsDelegableDisabled" }, ({ data }) =>
+      EServiceIsDelegableDisabledV2.toBinary(data)
+    )
+    .with({ type: "EServiceIsClientAccessDelegableEnabled" }, ({ data }) =>
+      EServiceIsClientAccessDelegableEnabledV2.toBinary(data)
+    )
+    .with({ type: "EServiceIsClientAccessDelegableDisabled" }, ({ data }) =>
+      EServiceIsClientAccessDelegableDisabledV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -272,6 +288,38 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceDescriptorDelegatorRejected"),
     data: protobufDecoder(EServiceDescriptorDelegatorRejectedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceIsDelegableEnabled"),
+    data: protobufDecoder(EServiceIsDelegableEnabledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceIsDelegableDisabled"),
+    data: protobufDecoder(EServiceIsDelegableDisabledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceIsClientAccessDelegableEnabled"),
+    data: protobufDecoder(EServiceIsClientAccessDelegableEnabledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceIsClientAccessDelegableDisabled"),
+    data: protobufDecoder(EServiceIsClientAccessDelegableDisabledV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
