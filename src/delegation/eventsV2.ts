@@ -11,7 +11,6 @@ import {
   ConsumerDelegationSubmittedV2,
 } from "../gen/v2/delegation/events.js";
 import { protobufDecoder } from "../utils.js";
-import { DelegationV2 } from "../gen/v2/delegation/delegation.js";
 
 export function delegationEventToBinaryDataV2(
   event: DelegationEventV2
