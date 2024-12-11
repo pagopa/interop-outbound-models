@@ -21,3 +21,5 @@ export * from "./gen/v2/purpose/purpose.js";
 export * from "./gen/v2/purpose/events.js";
 export * from "./gen/v2/tenant/tenant.js";
 export * from "./gen/v2/tenant/events.js";
+export * from "./gen/v2/delegation/delegation.js";
+export * from "./gen/v2/delegation/events.js";
