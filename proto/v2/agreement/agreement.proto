@@ -57,6 +57,7 @@ enum AgreementStateV2 {
 
 message AgreementStampV2 {
   int64 when = 1;
+  string delegationId = 2;
 }
 
 message AgreementStampsV2 {
