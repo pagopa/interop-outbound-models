@@ -3,6 +3,7 @@ syntax = "proto3";
 package purpose.v2;
 
 message PurposeV2 {
+  reserved 4;
   string id = 1;
   string eserviceId = 2;
   string consumerId = 3;
