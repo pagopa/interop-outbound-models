@@ -21,6 +21,9 @@ import {
   EServiceDraftDescriptorUpdatedV2,
   EServiceDescriptorQuotasUpdatedV2,
   EServiceDescriptionUpdatedV2,
+  EServiceDescriptorSubmittedByDelegateV2,
+  EServiceDescriptorApprovedByDelegatorV2,
+  EServiceDescriptorRejectedByDelegatorV2,
   EServiceDescriptorAttributesUpdatedV2,
   EServiceNameUpdatedV2,
 } from "../gen/v2/eservice/events.js";
@@ -85,6 +88,15 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceDescriptionUpdated" }, ({ data }) =>
       EServiceDescriptionUpdatedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorSubmittedByDelegate" }, ({ data }) =>
+      EServiceDescriptorSubmittedByDelegateV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorApprovedByDelegator" }, ({ data }) =>
+      EServiceDescriptorApprovedByDelegatorV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorRejectedByDelegator" }, ({ data }) =>
+      EServiceDescriptorRejectedByDelegatorV2.toBinary(data)
     )
     .with({ type: "EServiceDescriptorAttributesUpdated" }, ({ data }) =>
       EServiceDescriptorAttributesUpdatedV2.toBinary(data)
@@ -244,6 +256,30 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceDescriptionUpdated"),
     data: protobufDecoder(EServiceDescriptionUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorSubmittedByDelegate"),
+    data: protobufDecoder(EServiceDescriptorSubmittedByDelegateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorApprovedByDelegator"),
+    data: protobufDecoder(EServiceDescriptorApprovedByDelegatorV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorRejectedByDelegator"),
+    data: protobufDecoder(EServiceDescriptorRejectedByDelegatorV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
