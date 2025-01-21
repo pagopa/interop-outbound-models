@@ -116,6 +116,7 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceIsClientAccessDelegableDisabled" }, ({ data }) =>
       EServiceIsClientAccessDelegableDisabledV2.toBinary(data)
+    )
     .with({ type: "EServiceNameUpdated" }, ({ data }) =>
       EServiceDescriptionUpdatedV2.toBinary(data)
     )
@@ -333,10 +334,16 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceIsClientAccessDelegableDisabled"),
-    data: protobufDecoder(EServiceIsClientAccessDelegableDisabledV2),
     type: z.literal("EServiceNameUpdated"),
     data: protobufDecoder(EServiceNameUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceIsClientAccessDelegableDisabled"),
+    data: protobufDecoder(EServiceIsClientAccessDelegableDisabledV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
