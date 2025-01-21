@@ -124,7 +124,6 @@ message EServiceDescriptorAttributesUpdatedV2 {
   EServiceV2 eservice = 3;
 }
 
-
 message EServiceIsDelegableEnabledV2 {
     EServiceV2 eservice = 2;
 }
@@ -139,4 +138,7 @@ message EServiceIsClientAccessDelegableEnabledV2 {
 
 message EServiceIsClientAccessDelegableDisabledV2 {
     EServiceV2 eservice = 2;
+}
+message EServiceNameUpdatedV2 {
+    EServiceV2 eservice = 1;
 }
