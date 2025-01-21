@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 - Added delegation events: `ConsumerDelegationSubmittedV2`, `ConsumerDelegationApprovedV2`, `ConsumerDelegationRejectedV2` and `ConsumerDelegationRevokedV2`
 - Added eservice events: `EServiceIsDelegableEnabledV2`, `EServiceIsDelegableDisabledV2`, `EServiceIsClientAccessDelegableEnabledV2` and `EServiceIsClientAccessDelegableDisabledV2`
+- Added tenant events: `TenantDelegatedConsumerFeatureAddedV2` and `TenantDelegatedConsumerFeatureRemovedV2`
+- Added `DelegatedConsumer` data model
+- Changed `TenantFeature` data model with new feature
+- Changed `AgreementStamp` model with optional `delegationId`
+- Changed `EService` model with new flags `isDelegable` and `isClientAccessDelegable`
+- Changed `Purpose` model with optional `delegationId`and reserved position
 
 ## 1.2.0
 
@@ -23,11 +29,3 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added eservice event `EServiceNameUpdated`
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-## 1.0.13
-
-### Added
-- Added e-service event `EServiceDescriptorAttributesUpdated` (In-Add Attributes Feature)
