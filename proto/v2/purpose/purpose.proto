@@ -3,6 +3,7 @@ syntax = "proto3";
 package purpose.v2;
 
 message PurposeV2 {
+  reserved 4;
   string id = 1;
   string eserviceId = 2;
   string consumerId = 3;
@@ -15,6 +16,7 @@ message PurposeV2 {
   optional int64 updatedAt = 11;
   bool isFreeOfCharge = 12;
   optional string freeOfChargeReason = 13;
+  optional string delegationId = 14;
 }
 
 message PurposeVersionV2 {
