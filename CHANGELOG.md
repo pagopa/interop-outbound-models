@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.1
+
+### Fixed
+
+- Corrected release version
+
 ## 1.3.0
 
 ### Added
@@ -10,6 +16,9 @@ All notable changes to this project will be documented in this file.
 - Added eservice events: `EServiceIsDelegableEnabledV2`, `EServiceIsDelegableDisabledV2`, `EServiceIsClientAccessDelegableEnabledV2` and `EServiceIsClientAccessDelegableDisabledV2`
 - Added tenant events: `TenantDelegatedConsumerFeatureAddedV2` and `TenantDelegatedConsumerFeatureRemovedV2`
 - Added `DelegatedConsumer` data model
+
+### Changed
+
 - Changed `TenantFeature` data model with new feature
 - Changed `AgreementStamp` model with optional `delegationId`
 - Changed `EService` model with new flags `isDelegable` and `isClientAccessDelegable`
