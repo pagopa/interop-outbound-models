@@ -118,7 +118,7 @@ export function eServiceEventToBinaryDataV2(
       EServiceIsClientAccessDelegableDisabledV2.toBinary(data)
     )
     .with({ type: "EServiceNameUpdated" }, ({ data }) =>
-      EServiceDescriptionUpdatedV2.toBinary(data)
+      EServiceNameUpdatedV2.toBinary(data)
     )
     .exhaustive();
 }
