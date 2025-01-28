@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.3
+
+### Added
+
+- Added agreement events: `AgreementDeletedByRevokedDelegationV2` and `AgreementArchivedByRevokedDelegationV2`
+- Added purpose evenets: `PurposeDeletedByRevokedDelegationV2` and `PurposeVersionArchivedByRevokedDelegationV2`
+
 ## 1.3.2
 
 ### Fixed
