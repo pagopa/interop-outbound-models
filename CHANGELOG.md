@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.1
+
+### Changed
+
+- Renamed `isDelegable` flag to `isConsumerDelegable`
+- Renamed events `EServiceIsDelegableEnabledV2` and `EServiceIsDelegableDisabledV2` to `EServiceIsConsumerDelegableEnabledV2` and `EServiceIsConsumerDelegableDisabledV2`
+
 ## 1.4.0
 
 ### Added

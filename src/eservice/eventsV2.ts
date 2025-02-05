@@ -27,8 +27,8 @@ import {
   EServiceDescriptorAttributesUpdatedV2,
   EServiceIsClientAccessDelegableDisabledV2,
   EServiceIsClientAccessDelegableEnabledV2,
-  EServiceIsDelegableDisabledV2,
-  EServiceIsDelegableEnabledV2,
+  EServiceIsConsumerDelegableDisabledV2,
+  EServiceIsConsumerDelegableEnabledV2,
   EServiceNameUpdatedV2,
 } from "../gen/v2/eservice/events.js";
 
@@ -105,11 +105,11 @@ export function eServiceEventToBinaryDataV2(
     .with({ type: "EServiceDescriptorAttributesUpdated" }, ({ data }) =>
       EServiceDescriptorAttributesUpdatedV2.toBinary(data)
     )
-    .with({ type: "EServiceIsDelegableEnabled" }, ({ data }) =>
-      EServiceIsDelegableEnabledV2.toBinary(data)
+    .with({ type: "EServiceIsConsumerDelegableEnabled" }, ({ data }) =>
+      EServiceIsConsumerDelegableEnabledV2.toBinary(data)
     )
-    .with({ type: "EServiceIsDelegableDisabled" }, ({ data }) =>
-      EServiceIsDelegableDisabledV2.toBinary(data)
+    .with({ type: "EServiceIsConsumerDelegableDisabled" }, ({ data }) =>
+      EServiceIsConsumerDelegableDisabledV2.toBinary(data)
     )
     .with({ type: "EServiceIsClientAccessDelegableEnabled" }, ({ data }) =>
       EServiceIsClientAccessDelegableEnabledV2.toBinary(data)
@@ -310,16 +310,16 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceIsDelegableEnabled"),
-    data: protobufDecoder(EServiceIsDelegableEnabledV2),
+    type: z.literal("EServiceIsConsumerDelegableEnabled"),
+    data: protobufDecoder(EServiceIsConsumerDelegableEnabledV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceIsDelegableDisabled"),
-    data: protobufDecoder(EServiceIsDelegableDisabledV2),
+    type: z.literal("EServiceIsConsumerDelegableDisabled"),
+    data: protobufDecoder(EServiceIsConsumerDelegableDisabledV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
