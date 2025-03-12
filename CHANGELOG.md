@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.0
+
+### Added
+
+- Added `EServiceTemplate` data models
+- Added eservice-template events:
+  - `EServiceTemplateAddedV2`
+  - `EServiceTemplateDraftUpdatedV2`
+  - `EServiceTemplateDraftVersionUpdatedV2`
+  - `EServiceTemplateDraftVersionDeletedV2`
+  - `EServiceTemplateDeletedV2`
+  - `EServiceTemplateVersionInterfaceAddedV2`
+  - `EServiceTemplateVersionDocumentAddedV2`
+  - `EServiceTemplateVersionInterfaceDeletedV2`
+  - `EServiceTemplateVersionDocumentDeletedV2`
+  - `EServiceTemplateVersionInterfaceUpdatedV2`
+  - `EServiceTemplateVersionDocumentUpdatedV2`
+  - `EServiceTemplateVersionPublishedV2`
+  - `EServiceTemplateNameUpdatedV2`
+  - `EServiceTemplateIntendedTargetUpdatedV2`
+  - `EServiceTemplateDescriptionUpdatedV2`
+  - `EServiceTemplateVersionQuotasUpdatedV2`
+  - `EServiceTemplateVersionAddedV2`
+  - `EServiceTemplateVersionAttributesUpdatedV2`
+  - `EServiceTemplateVersionSuspendedV2`
+  - `EServiceTemplateVersionActivatedV2`
+- Added eservice events: 
+  - `EServiceDescriptionUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorQuotasUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorAttributesUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentAddedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentDeletedByTemplateUpdateV2`
+
+### Updated
+- Updated `EServiceDescriptorV2` data model with optional `templateVersionRef` property
+- Updated `EServiceV2` data model with optional `templateRef` property
+
 ## 1.4.2
 ### Updated
 

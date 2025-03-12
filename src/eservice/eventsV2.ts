@@ -30,6 +30,12 @@ import {
   EServiceIsConsumerDelegableDisabledV2,
   EServiceIsConsumerDelegableEnabledV2,
   EServiceNameUpdatedV2,
+  EServiceDescriptionUpdatedByTemplateUpdateV2,
+  EServiceDescriptorQuotasUpdatedByTemplateUpdateV2,
+  EServiceDescriptorAttributesUpdatedByTemplateUpdateV2,
+  EServiceDescriptorDocumentAddedByTemplateUpdateV2,
+  EServiceDescriptorDocumentUpdatedByTemplateUpdateV2,
+  EServiceDescriptorDocumentDeletedByTemplateUpdateV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -119,6 +125,34 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceNameUpdated" }, ({ data }) =>
       EServiceNameUpdatedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptionUpdatedByTemplateUpdate" }, ({ data }) =>
+      EServiceDescriptionUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorQuotasUpdatedByTemplateUpdate" },
+      ({ data }) =>
+        EServiceDescriptorQuotasUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorAttributesUpdatedByTemplateUpdate" },
+      ({ data }) =>
+        EServiceDescriptorAttributesUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorDocumentAddedByTemplateUpdate" },
+      ({ data }) =>
+        EServiceDescriptorDocumentAddedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorDocumentUpdatedByTemplateUpdate" },
+      ({ data }) =>
+        EServiceDescriptorDocumentUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorDocumentDeletedByTemplateUpdate" },
+      ({ data }) =>
+        EServiceDescriptorDocumentDeletedByTemplateUpdateV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -344,6 +378,56 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceIsClientAccessDelegableDisabled"),
     data: protobufDecoder(EServiceIsClientAccessDelegableDisabledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptionUpdatedByTemplateUpdate"),
+    data: protobufDecoder(EServiceDescriptionUpdatedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorQuotasUpdatedByTemplateUpdate"),
+    data: protobufDecoder(EServiceDescriptorQuotasUpdatedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorAttributesUpdatedByTemplateUpdate"),
+    data: protobufDecoder(
+      EServiceDescriptorAttributesUpdatedByTemplateUpdateV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorDocumentAddedByTemplateUpdate"),
+    data: protobufDecoder(EServiceDescriptorDocumentAddedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorDocumentUpdatedByTemplateUpdate"),
+    data: protobufDecoder(EServiceDescriptorDocumentUpdatedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorDocumentDeletedByTemplateUpdate"),
+    data: protobufDecoder(EServiceDescriptorDocumentDeletedByTemplateUpdateV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
