@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Fix regression, missing delegation export
+- Fixed missing delegation export
 
 ## 1.5.0
 
