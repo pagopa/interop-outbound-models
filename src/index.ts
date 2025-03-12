@@ -2,7 +2,8 @@ export * from "./eservice/index.js";
 export * from "./agreement/index.js";
 export * from "./purpose/index.js";
 export * from "./tenant/index.js";
-export * from "./delegation/index.js";
+export * from "./eservice-template/index.js";
+export * from "./eservice-template/index.js";
 
 export * from "./gen/v1/agreement/agreement.js";
 export * from "./gen/v1/agreement/events.js";
@@ -23,3 +24,5 @@ export * from "./gen/v2/tenant/tenant.js";
 export * from "./gen/v2/tenant/events.js";
 export * from "./gen/v2/delegation/delegation.js";
 export * from "./gen/v2/delegation/events.js";
+export * from "./gen/v2/eservice-template/eservice-template.js";
+export * from "./gen/v2/eservice-template/events.js";
