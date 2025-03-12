@@ -35,6 +35,8 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorDocumentAddedByTemplateUpdateV2`
   - `EServiceDescriptorDocumentUpdatedByTemplateUpdateV2`
   - `EServiceDescriptorDocumentDeletedByTemplateUpdateV2`
+
+### Updated
 - Updated `EServiceDescriptorV2` data model with optional `templateVersionRef` property
 - Updated `EServiceV2` data model with optional `templateRef` property
 
