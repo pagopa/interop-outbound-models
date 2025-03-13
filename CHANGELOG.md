@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.1
+
+### Fixed
+
+- Fixed missing delegation export
+
 ## 1.5.0
 
 ### Added
