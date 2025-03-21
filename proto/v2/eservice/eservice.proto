@@ -71,7 +71,6 @@ message TemplateInstanceInterfaceMetadataV2 {
   string contactEmail = 2;
   string contactUrl = 3;
   string termsAndConditionsUrl = 4;
-  repeated string serverUrls = 5;
 }
 
 message EServiceTemplateVersionRefV2 {
