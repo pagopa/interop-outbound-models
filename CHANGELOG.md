@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.3
+
+### Fixed
+
+- Fixed missing `optional` keywords in `TemplateInstanceInterfaceMetadataV2` proto model properties
+
 ## 1.5.2
 
 ### Removed
@@ -40,7 +46,7 @@ All notable changes to this project will be documented in this file.
   - `EServiceTemplateVersionAttributesUpdatedV2`
   - `EServiceTemplateVersionSuspendedV2`
   - `EServiceTemplateVersionActivatedV2`
-- Added eservice events: 
+- Added eservice events:
   - `EServiceDescriptionUpdatedByTemplateUpdateV2`
   - `EServiceDescriptorQuotasUpdatedByTemplateUpdateV2`
   - `EServiceDescriptorAttributesUpdatedByTemplateUpdateV2`
@@ -49,10 +55,12 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorDocumentDeletedByTemplateUpdateV2`
 
 ### Updated
+
 - Updated `EServiceDescriptorV2` data model with optional `templateVersionRef` property
 - Updated `EServiceV2` data model with optional `templateRef` property
 
 ## 1.4.2
+
 ### Updated
 
 - Updated the structure of `delegationV2` message
