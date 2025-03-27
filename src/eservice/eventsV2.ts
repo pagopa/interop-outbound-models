@@ -36,6 +36,7 @@ import {
   EServiceDescriptorDocumentAddedByTemplateUpdateV2,
   EServiceDescriptorDocumentUpdatedByTemplateUpdateV2,
   EServiceDescriptorDocumentDeletedByTemplateUpdateV2,
+  EServiceNameUpdatedByTemplateUpdateV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -153,6 +154,9 @@ export function eServiceEventToBinaryDataV2(
       { type: "EServiceDescriptorDocumentDeletedByTemplateUpdate" },
       ({ data }) =>
         EServiceDescriptorDocumentDeletedByTemplateUpdateV2.toBinary(data)
+    )
+    .with({ type: "EServiceNameUpdatedByTemplateUpdate" }, ({ data }) =>
+      EServiceNameUpdatedByTemplateUpdateV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -428,6 +432,14 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceDescriptorDocumentDeletedByTemplateUpdate"),
     data: protobufDecoder(EServiceDescriptorDocumentDeletedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceNameUpdatedByTemplateUpdate"),
+    data: protobufDecoder(EServiceNameUpdatedByTemplateUpdateV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
