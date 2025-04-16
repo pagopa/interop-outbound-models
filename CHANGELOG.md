@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.0
+
+### Added
+
+- Added `EServiceDescriptorAgreementApprovalPolicyUpdated` eservice event
+
 ## 1.5.4
 
 ### Added
