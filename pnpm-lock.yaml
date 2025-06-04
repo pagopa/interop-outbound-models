@@ -49,7 +49,7 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
       vitest:
-        specifier: ^2.0.4
+        specifier: ^2.1.9
         version: 2.1.9(@types/node@20.14.6)
 
 packages:
