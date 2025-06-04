@@ -1,6 +1,17 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## 1.6.3
+
+### Fixed
+
+- Fixed deployment problem by deploying the correct version
+
+## 1.6.2
+
+### Updated
+
+- Updated vitest from 2.0.4 to 2.1.9
 
 ## 1.6.1
 
