@@ -12,8 +12,9 @@ message EServiceV2 {
   int64 createdAt = 7;
   EServiceModeV2 mode = 8;
   optional bool isSignalHubEnabled = 9;
-  optional bool isDelegable = 10;
+  optional bool isConsumerDelegable = 10;
   optional bool isClientAccessDelegable = 11;
+  optional string templateId = 13;
 }
 
 message EServiceAttributeValueV2 {
@@ -56,6 +57,20 @@ message EServiceDescriptorV2 {
   optional int64 archivedAt = 17;
   EServiceAttributesV2 attributes = 18;
   repeated DescriptorRejectionReasonV2 rejectionReasons = 19;
+  optional EServiceTemplateVersionRefV2 templateVersionRef = 20;
+}
+
+
+message TemplateInstanceInterfaceMetadataV2 {
+  optional string contactName = 1;
+  optional string contactEmail = 2;
+  optional string contactUrl = 3;
+  optional string termsAndConditionsUrl = 4;
+}
+
+message EServiceTemplateVersionRefV2 {
+  string id = 1;
+  optional TemplateInstanceInterfaceMetadataV2 interfaceMetadata = 2;
 }
 
 message EServiceDocumentV2 {

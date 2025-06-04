@@ -2,6 +2,94 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.1
+
+### Updated
+
+- Updated e-service data model removing `templateRef` in favor of `templateId`
+
+## 1.6.0
+
+### Added
+
+- Added `EServiceDescriptorAgreementApprovalPolicyUpdated` eservice event
+
+## 1.5.4
+
+### Added
+
+- Added `EServiceNameUpdatedByTemplateUpdate` eservice event
+
+## 1.5.3
+
+### Fixed
+
+- Fixed missing `optional` keywords in `TemplateInstanceInterfaceMetadataV2` proto model properties
+
+## 1.5.2
+
+### Removed
+
+- Removed `serverUrls` from `TemplateInstanceInterfaceMetadataV2`
+
+## 1.5.1
+
+### Fixed
+
+- Fixed missing delegation export
+
+## 1.5.0
+
+### Added
+
+- Added `EServiceTemplate` data models
+- Added eservice-template events:
+  - `EServiceTemplateAddedV2`
+  - `EServiceTemplateDraftUpdatedV2`
+  - `EServiceTemplateDraftVersionUpdatedV2`
+  - `EServiceTemplateDraftVersionDeletedV2`
+  - `EServiceTemplateDeletedV2`
+  - `EServiceTemplateVersionInterfaceAddedV2`
+  - `EServiceTemplateVersionDocumentAddedV2`
+  - `EServiceTemplateVersionInterfaceDeletedV2`
+  - `EServiceTemplateVersionDocumentDeletedV2`
+  - `EServiceTemplateVersionInterfaceUpdatedV2`
+  - `EServiceTemplateVersionDocumentUpdatedV2`
+  - `EServiceTemplateVersionPublishedV2`
+  - `EServiceTemplateNameUpdatedV2`
+  - `EServiceTemplateIntendedTargetUpdatedV2`
+  - `EServiceTemplateDescriptionUpdatedV2`
+  - `EServiceTemplateVersionQuotasUpdatedV2`
+  - `EServiceTemplateVersionAddedV2`
+  - `EServiceTemplateVersionAttributesUpdatedV2`
+  - `EServiceTemplateVersionSuspendedV2`
+  - `EServiceTemplateVersionActivatedV2`
+- Added eservice events:
+  - `EServiceDescriptionUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorQuotasUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorAttributesUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentAddedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentUpdatedByTemplateUpdateV2`
+  - `EServiceDescriptorDocumentDeletedByTemplateUpdateV2`
+
+### Updated
+
+- Updated `EServiceDescriptorV2` data model with optional `templateVersionRef` property
+- Updated `EServiceV2` data model with optional `templateRef` property
+
+## 1.4.2
+
+### Updated
+
+- Updated the structure of `delegationV2` message
+
+## 1.4.1
+
+### Changed
+
+- Renamed `isDelegable` flag to `isConsumerDelegable`
+- Renamed events `EServiceIsDelegableEnabledV2` and `EServiceIsDelegableDisabledV2` to `EServiceIsConsumerDelegableEnabledV2` and `EServiceIsConsumerDelegableDisabledV2`
+
 ## 1.4.0
 
 ### Added
