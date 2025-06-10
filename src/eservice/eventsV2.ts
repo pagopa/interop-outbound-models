@@ -38,7 +38,8 @@ import {
   EServiceDescriptorDocumentDeletedByTemplateUpdateV2,
   EServiceNameUpdatedByTemplateUpdateV2,
   EServiceDescriptorAgreementApprovalPolicyUpdatedV2,
-  EServiceSignalhubActivationServiceUpdatedV2,
+  EServiceSignalHubEnabledV2,
+  EServiceSignalHubDisabledV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -165,8 +166,11 @@ export function eServiceEventToBinaryDataV2(
       ({ data }) =>
         EServiceDescriptorAgreementApprovalPolicyUpdatedV2.toBinary(data)
     )
-    .with({ type: "EServiceSignalhubActivationServiceUpdated" }, ({ data }) =>
-      EServiceSignalhubActivationServiceUpdatedV2.toBinary(data)
+    .with({ type: "EServiceSignalHubEnabled" }, ({ data }) =>
+      EServiceSignalHubEnabledV2.toBinary(data)
+    )
+    .with({ type: "EServiceSignalHubDisabled" }, ({ data }) =>
+      EServiceSignalHubDisabledV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -464,8 +468,16 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceSignalhubActivationServiceUpdated"),
-    data: protobufDecoder(EServiceSignalhubActivationServiceUpdatedV2),
+    type: z.literal("EServiceSignalHubEnabled"),
+    data: protobufDecoder(EServiceSignalHubEnabledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceSignalHubDisabled"),
+    data: protobufDecoder(EServiceSignalHubDisabledV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),

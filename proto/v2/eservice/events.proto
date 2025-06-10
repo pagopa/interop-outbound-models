@@ -186,6 +186,10 @@ message EServiceDescriptorAgreementApprovalPolicyUpdatedV2 {
   EServiceV2 eservice = 2;
 }
 
-message EServiceSignalhubActivationServiceUpdatedV2 {
+message EServiceSignalHubEnabledV2 {
+    EServiceV2 eservice = 1;
+}
+
+message EServiceSignalHubDisabledV2 {
     EServiceV2 eservice = 1;
 }

@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added `EServiceSignalhubActivationServiceUpdated` eservice event
+- Added `EServiceSignalHubEnabled` and `EServiceSignalHubDisabled` eservice event
 
 ## 1.6.3
 
