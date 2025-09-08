@@ -28,6 +28,7 @@ message PurposeVersionV2 {
   optional int64 firstActivationAt = 6;
   optional int64 suspendedAt = 7;
   optional string rejectionReason = 8;
+  optional PurposeVersionStampsV2 stamps = 9;
 }
 
 enum PurposeStateV2 {
@@ -37,4 +38,13 @@ enum PurposeStateV2 {
   WAITING_FOR_APPROVAL = 3;
   ARCHIVED = 4;
   REJECTED = 5;
+}
+
+message PurposeVersionStampsV2 {
+  PurposeVersionStampV2 creation = 1;
+}
+
+message PurposeVersionStampV2 {
+  string who = 1;
+  int64 when = 2;
 }
