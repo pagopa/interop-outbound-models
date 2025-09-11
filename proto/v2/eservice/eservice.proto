@@ -15,6 +15,7 @@ message EServiceV2 {
   optional bool isConsumerDelegable = 10;
   optional bool isClientAccessDelegable = 11;
   optional string templateId = 13;
+  optional bool personalData = 14
 }
 
 message EServiceAttributeValueV2 {
