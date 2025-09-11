@@ -172,6 +172,9 @@ export function eServiceEventToBinaryDataV2(
     .with({ type: "EServiceSignalHubDisabled" }, ({ data }) =>
       EServiceSignalHubDisabledV2.toBinary(data)
     )
+    .with({ type: "EServicePersonalDataUpdatedAfterPublish" }, ({ data }) =>
+      EServicePersonalDataUpdatedAfterPublishV2.toBinary(data)
+    )
     .exhaustive();
 }
 
