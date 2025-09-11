@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.5
+
+### Added
+
+- Added `PurposeVersionStamp` inside `PurposeVersion`
+
 ## 1.6.4
 
 ### Added
