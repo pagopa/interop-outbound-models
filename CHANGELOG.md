@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.6
+
+### Added
+
+- Added `personalData` in EService
+- Added `EServicePersonalDataUpdatedAfterPublish` eservice event
+
 ## 1.6.5
 
 ### Added
