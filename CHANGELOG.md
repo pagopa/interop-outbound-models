@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Added `personalData` in EServiceTemplate
+- Added `EServiceTemplatePersonalDataUpdatedAfterPublish` eservice-template event
+- Added `EServicePersonalDataUpdatedByTemplateUpdate` eservice event
+
+### Added
+
 - Added `personalData` in EService
 - Added `EServicePersonalDataUpdatedAfterPublish` eservice event
 
