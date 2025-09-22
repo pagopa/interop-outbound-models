@@ -40,4 +40,5 @@ message EServiceTemplateV2 {
   int64 createdAt = 8;
   eservice.v2.EServiceModeV2 mode = 9;
   optional bool isSignalHubEnabled = 10;
+  optional bool personalData = 11;
 }
