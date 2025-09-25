@@ -105,6 +105,6 @@ message EServiceTemplateVersionActivatedV2 {
   EServiceTemplateV2 eserviceTemplate = 2;
 }
 
-message EServiceTemplatePersonalDataUpdatedAfterPublicationV2 {
+message EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2 {
   EServiceTemplateV2 eserviceTemplate = 1;
 }

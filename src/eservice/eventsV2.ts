@@ -40,8 +40,8 @@ import {
   EServiceDescriptorAgreementApprovalPolicyUpdatedV2,
   EServiceSignalHubEnabledV2,
   EServiceSignalHubDisabledV2,
-  EServicePersonalDataUpdatedAfterPublicationV2,
-  EServicePersonalDataUpdatedByTemplateUpdateV2,
+  EServicePersonalDataFlagUpdatedAfterPublicationV2,
+  EServicePersonalDataFlagUpdatedByTemplateUpdateV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -174,11 +174,15 @@ export function eServiceEventToBinaryDataV2(
     .with({ type: "EServiceSignalHubDisabled" }, ({ data }) =>
       EServiceSignalHubDisabledV2.toBinary(data)
     )
-    .with({ type: "EServicePersonalDataUpdatedAfterPublication" }, ({ data }) =>
-      EServicePersonalDataUpdatedAfterPublicationV2.toBinary(data)
+    .with(
+      { type: "EServicePersonalDataFlagUpdatedAfterPublication" },
+      ({ data }) =>
+        EServicePersonalDataFlagUpdatedAfterPublicationV2.toBinary(data)
     )
-    .with({ type: "EServicePersonalDataUpdatedByTemplateUpdate" }, ({ data }) =>
-      EServicePersonalDataUpdatedByTemplateUpdateV2.toBinary(data)
+    .with(
+      { type: "EServicePersonalDataFlagUpdatedByTemplateUpdate" },
+      ({ data }) =>
+        EServicePersonalDataFlagUpdatedByTemplateUpdateV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -492,16 +496,16 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServicePersonalDataUpdatedAfterPublication"),
-    data: protobufDecoder(EServicePersonalDataUpdatedAfterPublicationV2),
+    type: z.literal("EServicePersonalDataFlagUpdatedAfterPublication"),
+    data: protobufDecoder(EServicePersonalDataFlagUpdatedAfterPublicationV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServicePersonalDataUpdatedByTemplateUpdate"),
-    data: protobufDecoder(EServicePersonalDataUpdatedByTemplateUpdateV2),
+    type: z.literal("EServicePersonalDataFlagUpdatedByTemplateUpdate"),
+    data: protobufDecoder(EServicePersonalDataFlagUpdatedByTemplateUpdateV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),

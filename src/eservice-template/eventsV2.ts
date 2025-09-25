@@ -21,7 +21,7 @@ import {
   EServiceTemplateVersionInterfaceUpdatedV2,
   EServiceTemplateVersionPublishedV2,
   EServiceTemplateVersionQuotasUpdatedV2,
-  EServiceTemplatePersonalDataUpdatedAfterPublicationV2,
+  EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2,
 } from "../gen/v2/eservice-template/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -90,9 +90,9 @@ export function eserviceTemplateEventToBinaryDataV2(
       EServiceTemplateVersionQuotasUpdatedV2.toBinary(data)
     )
     .with(
-      { type: "EServiceTemplatePersonalDataUpdatedAfterPublication" },
+      { type: "EServiceTemplatePersonalDataFlagUpdatedAfterPublication" },
       ({ data }) =>
-        EServiceTemplatePersonalDataUpdatedAfterPublicationV2.toBinary(data)
+        EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -260,9 +260,9 @@ export const EServiceTemplateEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceTemplatePersonalDataUpdatedAfterPublication"),
+    type: z.literal("EServiceTemplatePersonalDataFlagUpdatedAfterPublication"),
     data: protobufDecoder(
-      EServiceTemplatePersonalDataUpdatedAfterPublicationV2
+      EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2
     ),
     stream_id: z.string(),
     version: z.number(),
