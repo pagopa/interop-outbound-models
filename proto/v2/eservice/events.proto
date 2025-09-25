@@ -194,7 +194,7 @@ message EServiceSignalHubDisabledV2 {
     EServiceV2 eservice = 1;
 }
 
-message EServicePersonalDataUpdatedAfterPublishV2 {
+message EServicePersonalDataUpdatedAfterPublicationV2 {
     EServiceV2 eservice = 1;
 }
 
