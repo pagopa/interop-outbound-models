@@ -2,13 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.6.6
+## 1.6.8
+
+### Updated
+
+- Renamed `EServicePersonalDataUpdatedAfterPublish` into `EServicePersonalDataFlagUpdatedAfterPublication`
+- Renamed `EServicePersonalDataUpdatedByTemplateUpdate` into `EServicePersonalDataFlagUpdatedByTemplateUpdate`
+- Renamed `EServiceTemplatePersonalDataUpdatedAfterPublish` into `EServiceTemplatePersonalDataFlagUpdatedAfterPublication`
+
+## 1.6.7
 
 ### Added
 
 - Added `personalData` in EServiceTemplate
 - Added `EServiceTemplatePersonalDataUpdatedAfterPublish` eservice-template event
 - Added `EServicePersonalDataUpdatedByTemplateUpdate` eservice event
+
+## 1.6.6
 
 ### Added
 
