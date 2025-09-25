@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.7
+
+### Updated
+
+- Renamed `EServicePersonalDataUpdatedAfterPublish` into `EServicePersonalDataFlagUpdatedAfterPublication`
+- Renamed `EServicePersonalDataUpdatedByTemplateUpdate` into `EServicePersonalDataFlagUpdatedByTemplateUpdate`
+- Renamed `EServiceTemplatePersonalDataUpdatedAfterPublish` into `EServiceTemplatePersonalDataFlagUpdatedAfterPublication`
+
 ## 1.6.6
 
 ### Added
