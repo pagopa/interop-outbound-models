@@ -45,6 +45,5 @@ message PurposeVersionStampsV2 {
 }
 
 message PurposeVersionStampV2 {
-  string who = 1;
-  int64 when = 2;
+  int64 when = 1;
 }
