@@ -9,6 +9,8 @@ import {
   ConsumerDelegationRejectedV2,
   ConsumerDelegationRevokedV2,
   ConsumerDelegationSubmittedV2,
+  DelegationContractAddedV2,
+  DelegationSignedContractAddedV2,
 } from "../gen/v2/delegation/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -39,6 +41,12 @@ export function delegationEventToBinaryDataV2(
     )
     .with({ type: "ConsumerDelegationRevoked" }, ({ data }) =>
       ConsumerDelegationRevokedV2.toBinary(data)
+    )
+    .with({ type: "DelegationContractAdded" }, ({ data }) =>
+      DelegationContractAddedV2.toBinary(data)
+    )
+    .with({ type: "DelegationSignedContractAdded" }, ({ data }) =>
+      DelegationSignedContractAddedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -104,6 +112,22 @@ export const DelegationEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("ConsumerDelegationRevoked"),
     data: protobufDecoder(ConsumerDelegationRevokedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("DelegationContractAdded"),
+    data: protobufDecoder(DelegationContractAddedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("DelegationSignedContractAdded"),
+    data: protobufDecoder(DelegationSignedContractAddedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),

@@ -22,6 +22,8 @@ import {
   AgreementSetMissingCertifiedAttributesByPlatformV2,
   AgreementDeletedByRevokedDelegationV2,
   AgreementArchivedByRevokedDelegationV2,
+  AgreementSignedContractAddedV2,
+  AgreementContractAddedV2,
 } from "../gen/v2/agreement/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -93,6 +95,12 @@ export function agreementEventToBinaryDataV2(
     )
     .with({ type: "AgreementArchivedByRevokedDelegation" }, ({ data }) =>
       AgreementArchivedByRevokedDelegationV2.toBinary(data)
+    )
+    .with({ type: "AgreementContractAdded" }, ({ data }) =>
+      AgreementContractAddedV2.toBinary(data)
+    )
+    .with({ type: "AgreementSignedContractAdded" }, ({ data }) =>
+      AgreementSignedContractAddedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -262,6 +270,22 @@ export const AgreementEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("AgreementArchivedByRevokedDelegation"),
     data: protobufDecoder(AgreementArchivedByRevokedDelegationV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("AgreementContractAdded"),
+    data: protobufDecoder(AgreementContractAddedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("AgreementSignedContractAdded"),
+    data: protobufDecoder(AgreementSignedContractAddedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
