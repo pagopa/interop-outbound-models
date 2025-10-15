@@ -92,10 +92,10 @@ message AgreementArchivedByRevokedDelegationV2 {
   string delegationId = 2;
 }
 
-message AgreementContractAddedV2 {
+message AgreementContractGeneratedV2 {
   AgreementV2 agreement = 1;
 }
 
-message AgreementSignedContractAddedV2 {
+message AgreementSignedContractGeneratedV2 {
   AgreementV2 agreement = 1;
 }

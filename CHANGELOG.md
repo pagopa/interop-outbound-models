@@ -7,14 +7,14 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added delegation events:
-  - `DelegationContractAdded`
-  - `DelegationSignedContractAdded`
+  - `DelegationContractGenerated`
+  - `DelegationSignedContractGenerated`
 - Added agreement events:
-  - `AgreementContractAdded`
-  - `AgreementSignedContractAdded`
+  - `AgreementContractGenerated`
+  - `AgreementSignedContractGenerated`
 - Added purpose events:
-  - `RiskAnalysisDocumentAdded`
-  - `RiskAnalysisSignedDocumentAdded`
+  - `RiskAnalysisDocumentGenerated`
+  - `RiskAnalysisSignedDocumentGenerated`
 
 ## 1.6.9
 
