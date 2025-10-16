@@ -21,6 +21,8 @@ import {
   PurposeClonedV2,
   PurposeVersionArchivedByRevokedDelegationV2,
   PurposeDeletedByRevokedDelegationV2,
+  RiskAnalysisDocumentGeneratedV2,
+  RiskAnalysisSignedDocumentGeneratedV2,
 } from "../gen/v2/purpose/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -83,6 +85,12 @@ export function purposeEventToBinaryDataV2(event: PurposeEventV2): Uint8Array {
     )
     .with({ type: "PurposeDeletedByRevokedDelegation" }, ({ data }) =>
       PurposeDeletedByRevokedDelegationV2.toBinary(data)
+    )
+    .with({ type: "RiskAnalysisDocumentGenerated" }, ({ data }) =>
+      RiskAnalysisDocumentGeneratedV2.toBinary(data)
+    )
+    .with({ type: "RiskAnalysisSignedDocumentGenerated" }, ({ data }) =>
+      RiskAnalysisSignedDocumentGeneratedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -244,6 +252,22 @@ export const PurposeEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("PurposeDeletedByRevokedDelegation"),
     data: protobufDecoder(PurposeDeletedByRevokedDelegationV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("RiskAnalysisDocumentGenerated"),
+    data: protobufDecoder(RiskAnalysisDocumentGeneratedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("RiskAnalysisSignedDocumentGenerated"),
+    data: protobufDecoder(RiskAnalysisSignedDocumentGeneratedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),

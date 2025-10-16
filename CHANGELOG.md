@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.0
+
+### Added
+
+- Added delegation events:
+  - `DelegationContractGenerated`
+  - `DelegationSignedContractGenerated`
+- Added agreement events:
+  - `AgreementContractGenerated`
+  - `AgreementSignedContractGenerated`
+- Added purpose events:
+  - `RiskAnalysisDocumentGenerated`
+  - `RiskAnalysisSignedDocumentGenerated`
+
 ## 1.6.9
 
 - Removed `who` from `PurposeVersionStamp`
