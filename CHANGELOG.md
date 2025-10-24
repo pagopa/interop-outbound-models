@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.2
+
+### Added
+
+- Added purpose template events:
+  - `some event1`
+  - `some event1`
+  - `some event1`
+
+
 ## 1.7.0
 
 ### Added
