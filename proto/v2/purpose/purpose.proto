@@ -30,7 +30,7 @@ message PurposeVersionV2 {
   optional string rejectionReason = 8;
   optional PurposeVersionStampsV2 stamps = 9;
   optional string signedRiskAnalysis = 10;
-  optional int64 signedAt = 11
+  optional int64 signedAt = 11;
 }
 
 enum PurposeStateV2 {

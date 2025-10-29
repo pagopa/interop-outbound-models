@@ -44,7 +44,7 @@ message AgreementDocumentV2 {
   string prettyName = 3;
   string contentType = 4;
   int64 createdAt = 5;
-  optional int64 signedAt = 6
+  optional int64 signedAt = 6;
 }
 
 enum AgreementStateV2 {
