@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.1
+
+### Added
+
+- Added `signedRiskAnalysis` from `PurposeVersionV2`
+- Added `signedAt` from `PurposeVersionV2`
+- Added `signedContract` from `DelegationV2`
+- Added `signedAt` from `DelegationContractDocumentV2`
+- Added `signedContract` from `AgreementV2`
+- Added `signedAt` from `AgreementDocumentV2`
+
 ## 1.7.0
 
 ### Added
