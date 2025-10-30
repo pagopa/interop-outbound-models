@@ -16,6 +16,7 @@ message DelegationV2 {
   optional DelegationContractDocumentV2 activationContract = 14;
   optional DelegationContractDocumentV2 revocationContract = 15;
   optional int64 updatedAt = 16;
+  optional string signedContract = 17;
 }
 
 message DelegationContractDocumentV2 {
@@ -24,6 +25,7 @@ message DelegationContractDocumentV2 {
   string prettyName = 3;
   string contentType = 4;
   int64 createdAt = 5;
+  optional int64 signedAt = 6;
 }
 
 message DelegationStampV2 {
