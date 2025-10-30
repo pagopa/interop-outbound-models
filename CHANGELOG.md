@@ -6,8 +6,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added `signedRiskAnalysis` from `PurposeVersionV2`
-- Added `signedAt` from `PurposeVersionV2`
 - Added `signedContract` from `DelegationV2`
 - Added `signedAt` from `DelegationContractDocumentV2`
 - Added `signedContract` from `AgreementV2`
