@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
   - `PurposeTemplateArchivedV2`
   - `PurposeTemplateAnnotationDocumentAddedV2`
   - `PurposeTemplateAnnotationDocumentDeletedV2`
+  - `PurposeTemplateAnnotationDocumentUpdatedV2`
 
 ## 1.7.2
 

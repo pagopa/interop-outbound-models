@@ -4,6 +4,7 @@ import {
   PurposeTemplateAddedV2,
   PurposeTemplateAnnotationDocumentAddedV2,
   PurposeTemplateAnnotationDocumentDeletedV2,
+  PurposeTemplateAnnotationDocumentUpdatedV2,
   PurposeTemplateArchivedV2,
   PurposeTemplateDraftDeletedV2,
   PurposeTemplateDraftUpdatedV2,
@@ -51,6 +52,9 @@ export function purposeTemplateEventToBinaryDataV2(
     )
     .with({ type: "PurposeTemplateAnnotationDocumentDeleted" }, ({ data }) =>
       PurposeTemplateAnnotationDocumentDeletedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplateAnnotationDocumentUpdated" }, ({ data }) =>
+      PurposeTemplateAnnotationDocumentUpdatedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -140,6 +144,14 @@ export const PurposeTemplateEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("PurposeTemplateAnnotationDocumentDeleted"),
     data: protobufDecoder(PurposeTemplateAnnotationDocumentDeletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplateAnnotationDocumentUpdated"),
+    data: protobufDecoder(PurposeTemplateAnnotationDocumentUpdatedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.string(),
