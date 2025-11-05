@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.0
+
+### Added purpose template events:
+  - `PurposeTemplateAddedV2`
+  - `PurposeTemplateEServiceLinkedV2`
+  - `PurposeTemplateEServiceUnlinkedV2`
+  - `PurposeTemplateDraftUpdatedV2`
+  - `PurposeTemplateDraftDeletedV2`
+  - `PurposeTemplatePublishedV2`
+  - `PurposeTemplateUnsuspendedV2`
+  - `PurposeTemplateSuspendedV2`
+  - `PurposeTemplateArchivedV2`
+  - `PurposeTemplateAnnotationDocumentAddedV2`
+  - `PurposeTemplateAnnotationDocumentDeletedV2`
+  - `PurposeTemplateAnnotationDocumentUpdatedV2`
+
 ## 1.7.2
 
 ### Added
