@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.1
+
+### Fixed
+
+- Fixed missing export of events models
+- Fixed visibility risk analysis in purpose-template
+
 ## 1.8.0
 
 ### Added purpose template events:
