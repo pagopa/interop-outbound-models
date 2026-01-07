@@ -13,6 +13,8 @@ import {
   PurposeTemplatePublishedV2,
   PurposeTemplateSuspendedV2,
   PurposeTemplateUnsuspendedV2,
+  RiskAnalysisTemplateDocumentGeneratedV2,
+  RiskAnalysisTemplateSignedDocumentGeneratedV2,
 } from "../gen/v2/purpose-template/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -55,6 +57,12 @@ export function purposeTemplateEventToBinaryDataV2(
     )
     .with({ type: "PurposeTemplateAnnotationDocumentUpdated" }, ({ data }) =>
       PurposeTemplateAnnotationDocumentUpdatedV2.toBinary(data)
+    )
+    .with({ type: "RiskAnalysisTemplateDocumentGenerated" }, ({ data }) =>
+      RiskAnalysisTemplateDocumentGeneratedV2.toBinary(data)
+    )
+    .with({ type: "RiskAnalysisTemplateSignedDocumentGenerated" }, ({ data }) =>
+      RiskAnalysisTemplateSignedDocumentGeneratedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -152,6 +160,22 @@ export const PurposeTemplateEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("PurposeTemplateAnnotationDocumentUpdated"),
     data: protobufDecoder(PurposeTemplateAnnotationDocumentUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("RiskAnalysisTemplateDocumentGenerated"),
+    data: protobufDecoder(RiskAnalysisTemplateDocumentGeneratedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("RiskAnalysisTemplateSignedDocumentGenerated"),
+    data: protobufDecoder(RiskAnalysisTemplateSignedDocumentGeneratedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.string(),
