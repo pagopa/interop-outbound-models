@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.2
+
+### Added purpose template events about document archiving:
+- `RiskAnalysisTemplateDocumentGeneratedV2`
+- `RiskAnalysisTemplateSignedDocumentGeneratedV2`
+
 ## 1.8.1
 
 ### Fixed
