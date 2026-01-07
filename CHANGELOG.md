@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.3
+
+### Fixed
+- Fixed missing declarations of events `RiskAnalysisTemplate*V2`
+
+
 ## 1.8.2
 
 ### Added purpose template events about document archiving:
