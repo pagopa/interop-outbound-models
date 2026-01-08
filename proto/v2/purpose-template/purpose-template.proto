@@ -11,7 +11,7 @@ enum PurposeTemplateStateV2 {
 
 enum TargetTenantKindV2 {
   PA = 0;
-  PRIVATE = 1;
+  PRIVATE = 2;
 }
 
 message PurposeTemplateV2 {
