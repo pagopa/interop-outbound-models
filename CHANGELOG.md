@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.4
+
+### Updated purpose template's target tenant kind
+- Updated target tenant kind in `PurposeTemplateV2`
+
 ## 1.8.3
 
 ### Fixed
