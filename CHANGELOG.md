@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.5
+
+### Fixed target tenant kind Protobuf
+- Fixed target tenant kind Protobuf
+
 ## 1.8.4
 
 ### Updated purpose template's target tenant kind
