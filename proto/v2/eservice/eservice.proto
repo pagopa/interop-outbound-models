@@ -21,6 +21,7 @@ message EServiceV2 {
 message EServiceAttributeValueV2 {
   string id = 1;
   bool explicitAttributeVerification = 2;
+  optional int32 dailyCalls = 3;
 }
 
 message EServiceAttributeV2 {
