@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.6
+
+### Added support for Custom Thresholds in EServiceDescriptor attributes
+- Added `dailyCalls` property to `EServiceDescriptorAttributeV2` protobuf model.
+
 ## 1.8.5
 
 ### Fixed target tenant kind Protobuf
