@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.7
+
+### EServiceDescriptorAttributeV2 Refactor
+- renamed `dailyCalls` field to `dailyCallsPerConsumer`
+
 ## 1.8.6
 
 ### Added support for Custom Thresholds in EServiceDescriptor attributes
