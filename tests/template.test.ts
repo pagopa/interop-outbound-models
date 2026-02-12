@@ -1,50 +1,47 @@
 import { describe, it, expect } from "vitest";
 import {
-  encodeOutboundEServiceEvent,
-  decodeOutboundEServiceEvent,
-  EServiceEvent,
+  encodeOutboundEServiceTemplateEvent,
+  decodeOutboundEServiceTemplateEvent,
+  EServiceTemplateEvent,
+  EServiceTemplateVersionStateV2,
   EServiceModeV2,
   EServiceTechnologyV2,
-  EServiceDescriptorStateV2,
   AgreementApprovalPolicyV2,
 } from "../src/index.js";
 
-describe("eservice", () => {
-  it("should correctly encode and decode EServiceDescriptorArchived event", () => {
-    const event: EServiceEvent = {
+describe("eservice-template", () => {
+  it("should correctly encode and decode EServiceTemplateAdded event", () => {
+    const event: EServiceTemplateEvent = {
       event_version: 2,
-      type: "EServiceDescriptorArchived",
+      type: "EServiceTemplateAdded",
       data: {
-        descriptorId: "testtea",
-        eservice: {
-          id: "test",
-          createdAt: 1n,
-          producerId: "test",
-          mode: EServiceModeV2.DELIVER,
-          description: "testtest",
-          name: "test",
+        eserviceTemplate: {
+          id: "test-template-id",
+          creatorId: "creator-123",
+          name: "Test Template",
+          intendedTarget: "Test Target Audience",
+          description: "Test template description",
           technology: EServiceTechnologyV2.REST,
-          descriptors: [
+          mode: EServiceModeV2.DELIVER,
+          createdAt: 1n,
+          versions: [
             {
-              id: "id",
+              id: "version-id",
               version: 1n,
               docs: [],
-              state: EServiceDescriptorStateV2.DRAFT,
-              audience: [],
+              state: EServiceTemplateVersionStateV2.DRAFT,
               voucherLifespan: 60,
               dailyCallsPerConsumer: 10,
               dailyCallsTotal: 1000,
               createdAt: 1n,
-              serverUrls: ["pagopa.it"],
               agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
               attributes: {
                 certified: [
                   {
                     values: [
                       {
-                        id: "test",
-                        explicitAttributeVerification: true,
-                        dailyCallsPerConsumer: 10,
+                        id: "attr-id",
+                        explicitAttributeVerification: false,
                       },
                     ],
                   },
@@ -52,7 +49,6 @@ describe("eservice", () => {
                 verified: [],
                 declared: [],
               },
-              rejectionReasons: [],
             },
           ],
         },
@@ -62,8 +58,8 @@ describe("eservice", () => {
       version: 1,
     };
 
-    const encoded = encodeOutboundEServiceEvent(event);
-    const decoded = decodeOutboundEServiceEvent(encoded);
+    const encoded = encodeOutboundEServiceTemplateEvent(event);
+    const decoded = decodeOutboundEServiceTemplateEvent(encoded);
 
     expect(decoded).toEqual(event);
   });
