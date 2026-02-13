@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.8
+
+### Separated EServiceTemplate attributes from EService attributes
+- Created dedicated attribute types for EServiceTemplate: `EServiceTemplateAttributeValueV2`, `EServiceTemplateAttributeV2`, `EServiceTemplateAttributesV2`
+- Added test coverage for EServiceTemplate event encoding/decoding
+
 ## 1.8.7
 
 ### EServiceDescriptorAttributeV2 Refactor
