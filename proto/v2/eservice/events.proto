@@ -100,22 +100,22 @@ message EServiceDescriptorDocumentDeletedV2 {
 }
 
 message EServiceDescriptionUpdatedV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceDescriptorSubmittedByDelegateV2 {
-    string descriptorId = 1;
-    EServiceV2 eservice = 2;
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceDescriptorApprovedByDelegatorV2 {
-    string descriptorId = 1;
-    EServiceV2 eservice = 2;
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceDescriptorRejectedByDelegatorV2 {
-    string descriptorId = 1;
-    EServiceV2 eservice = 2;
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceDescriptorAttributesUpdatedV2 {
@@ -125,31 +125,31 @@ message EServiceDescriptorAttributesUpdatedV2 {
 }
 
 message EServiceIsConsumerDelegableEnabledV2 {
-    EServiceV2 eservice = 2;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceIsConsumerDelegableDisabledV2 {
-    EServiceV2 eservice = 2;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceIsClientAccessDelegableEnabledV2 {
-    EServiceV2 eservice = 2;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceIsClientAccessDelegableDisabledV2 {
-    EServiceV2 eservice = 2;
+  EServiceV2 eservice = 2;
 }
 
 message EServiceNameUpdatedV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceNameUpdatedByTemplateUpdateV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceDescriptionUpdatedByTemplateUpdateV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceDescriptorQuotasUpdatedByTemplateUpdateV2 {
@@ -187,17 +187,17 @@ message EServiceDescriptorAgreementApprovalPolicyUpdatedV2 {
 }
 
 message EServiceSignalHubEnabledV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceSignalHubDisabledV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServicePersonalDataFlagUpdatedAfterPublicationV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
 
 message EServicePersonalDataFlagUpdatedByTemplateUpdateV2 {
-    EServiceV2 eservice = 1;
+  EServiceV2 eservice = 1;
 }
