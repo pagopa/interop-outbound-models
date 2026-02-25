@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.9
+
+### Feature: instanceLabel
+- Added `instanceLabel` in eservice
+- Added `EServiceInstanceLabelUpdatedV2` event
+
 ## 1.8.8
 
 ### Separated EServiceTemplate attributes from EService attributes
