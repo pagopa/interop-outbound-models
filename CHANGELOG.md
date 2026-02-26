@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.10
+### Feature: instanceLabel - fix
+
 ## 1.8.9
 
 ### Feature: instanceLabel

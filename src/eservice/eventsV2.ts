@@ -42,6 +42,7 @@ import {
   EServiceSignalHubDisabledV2,
   EServicePersonalDataFlagUpdatedAfterPublicationV2,
   EServicePersonalDataFlagUpdatedByTemplateUpdateV2,
+  EServiceInstanceLabelUpdatedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -183,6 +184,9 @@ export function eServiceEventToBinaryDataV2(
       { type: "EServicePersonalDataFlagUpdatedByTemplateUpdate" },
       ({ data }) =>
         EServicePersonalDataFlagUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with({ type: "EServiceInstanceLabelUpdated" }, ({ data }) =>
+      EServiceInstanceLabelUpdatedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -506,6 +510,14 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServicePersonalDataFlagUpdatedByTemplateUpdate"),
     data: protobufDecoder(EServicePersonalDataFlagUpdatedByTemplateUpdateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceInstanceLabelUpdated"),
+    data: protobufDecoder(EServiceInstanceLabelUpdatedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
