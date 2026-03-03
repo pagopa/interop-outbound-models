@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.11
+
+### Added
+
+- Added `asyncExchange` in EServiceV2
+
 ## 1.8.10
 ### Feature: instanceLabel - fix
 

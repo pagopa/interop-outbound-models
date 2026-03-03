@@ -24,6 +24,7 @@ describe("eservice", () => {
           description: "testtest",
           name: "test",
           technology: EServiceTechnologyV2.REST,
+          asyncExchange: true,
           descriptors: [
             {
               id: "id",
