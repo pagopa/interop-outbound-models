@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.11
+
+### Added selfcareInstitutionType to ExternalId on TenantV2
+- Added `selfcareInstitutionType` property to `ExternalId` on `TenantV2` protobuf model.
+
 ## 1.8.10
 ### Feature: instanceLabel - fix
 
