@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.12
+
+### Moved selfcareInstitutionType from ExternalId to TenantV2
+- Moved `selfcareInstitutionType` property from `ExternalId` to `TenantV2` protobuf model.
+
 ## 1.8.11
 
 ### Added selfcareInstitutionType to ExternalId on TenantV2
