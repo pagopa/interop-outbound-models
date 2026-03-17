@@ -14,6 +14,7 @@ message TenantV2 {
   optional TenantKindV2 kind = 9;
   int64 onboardedAt = 10;
   optional TenantUnitTypeV2 subUnitType = 11;
+  optional string selfcareInstitutionType = 12;
 }
 
 enum TenantKindV2 {
@@ -66,7 +67,6 @@ message TenantRevokerV2 {
 message ExternalIdV2 {
   string origin = 1;
   string value = 2;
-  optional string selfcareInstitutionType = 3;
 }
 
 message TenantCertifiedAttributeV2 {
