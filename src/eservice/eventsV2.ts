@@ -43,6 +43,10 @@ import {
   EServicePersonalDataFlagUpdatedAfterPublicationV2,
   EServicePersonalDataFlagUpdatedByTemplateUpdateV2,
   EServiceInstanceLabelUpdatedV2,
+  EServiceDescriptorArchivingScheduledV2,
+  EServiceDescriptorArchivingScheduledDeletedV2,
+  EServiceDescriptorArchivingScheduledExpiredV2,
+  EServiceDescriptorManualArchivedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -187,6 +191,18 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceInstanceLabelUpdated" }, ({ data }) =>
       EServiceInstanceLabelUpdatedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingScheduled" }, ({ data }) =>
+      EServiceDescriptorArchivingScheduledV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingScheduledDeleted" }, ({ data }) =>
+      EServiceDescriptorArchivingScheduledDeletedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingScheduledExpired" }, ({ data }) =>
+      EServiceDescriptorArchivingScheduledExpiredV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorManualArchived" }, ({ data }) =>
+      EServiceDescriptorManualArchivedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -518,6 +534,38 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceInstanceLabelUpdated"),
     data: protobufDecoder(EServiceInstanceLabelUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingScheduled"),
+    data: protobufDecoder(EServiceDescriptorArchivingScheduledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingScheduledDeleted"),
+    data: protobufDecoder(EServiceDescriptorArchivingScheduledDeletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingScheduledExpired"),
+    data: protobufDecoder(EServiceDescriptorArchivingScheduledExpiredV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorManualArchived"),
+    data: protobufDecoder(EServiceDescriptorManualArchivedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
