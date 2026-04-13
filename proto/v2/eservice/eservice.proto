@@ -61,6 +61,7 @@ message EServiceDescriptorV2 {
   EServiceAttributesV2 attributes = 18;
   repeated DescriptorRejectionReasonV2 rejectionReasons = 19;
   optional EServiceTemplateVersionRefV2 templateVersionRef = 20;
+  optional EServiceDescriptorArchivingScheduleV2 archivingSchedule = 21;
 }
 
 
@@ -93,7 +94,7 @@ enum EServiceDescriptorStateV2 {
   ARCHIVED = 4;
   WAITING_FOR_APPROVAL = 5;
   ARCHIVING = 6;
-  SUSPENDED_ARCHIVING = 7;
+  ARCHIVING_SUSPENDED = 7;
 }
 
 enum EServiceTechnologyV2 {
@@ -109,4 +110,9 @@ enum AgreementApprovalPolicyV2 {
 enum EServiceModeV2 {
   RECEIVE = 0;
   DELIVER = 1;
+}
+
+message EServiceDescriptorArchivingScheduleV2 {
+  int64 archivingStartDate = 1;
+  int64 archivingEndDate = 2;
 }
