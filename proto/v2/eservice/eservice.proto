@@ -17,6 +17,8 @@ message EServiceV2 {
   optional string templateId = 13;
   optional bool personalData = 14;
   optional string instanceLabel = 15;
+  optional string archivingReason = 16;
+  optional string alternativeEservice = 17;
 }
 
 message EServiceAttributeValueV2 {
@@ -61,6 +63,7 @@ message EServiceDescriptorV2 {
   EServiceAttributesV2 attributes = 18;
   repeated DescriptorRejectionReasonV2 rejectionReasons = 19;
   optional EServiceTemplateVersionRefV2 templateVersionRef = 20;
+  optional int64 archivableOn = 21;
 }
 
 
@@ -92,6 +95,8 @@ enum EServiceDescriptorStateV2 {
   SUSPENDED = 3;
   ARCHIVED = 4;
   WAITING_FOR_APPROVAL = 5;
+  ARCHIVING = 6;
+  ARCHIVING_SUSPENDED = 7;
 }
 
 enum EServiceTechnologyV2 {
@@ -108,3 +113,4 @@ enum EServiceModeV2 {
   RECEIVE = 0;
   DELIVER = 1;
 }
+
