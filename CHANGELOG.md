@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.13
+
+### Added
+- Add MaintenanceEServiceUpdated event
+
 ## 1.8.12
 
 ### Moved selfcareInstitutionType from ExternalId to TenantV2
