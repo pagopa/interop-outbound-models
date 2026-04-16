@@ -222,14 +222,13 @@ message EServiceDescriptorManualArchivedV2 {
 }
 
 message EServiceArchivingScheduledV2 {
-  EServiceV2 eservice = 2;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceArchivingScheduledCanceledV2 {
-  EServiceV2 eservice = 2;
+  EServiceV2 eservice = 1;
 }
 
 message EServiceManualArchivedV2 {
-  string descriptorId = 1;
-  EServiceV2 eservice = 2;
+  EServiceV2 eservice = 1;
 }
