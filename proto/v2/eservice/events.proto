@@ -230,5 +230,6 @@ message EServiceArchivingScheduledCanceledV2 {
 }
 
 message EServiceManualArchivedV2 {
-  EServiceV2 eservice = 1;
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
 }
