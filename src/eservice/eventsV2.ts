@@ -201,10 +201,8 @@ export function eServiceEventToBinaryDataV2(
     .with({ type: "EServiceDescriptorArchiveScheduled" }, ({ data }) =>
       EServiceDescriptorArchiveScheduledV2.toBinary(data)
     )
-    .with(
-      { type: "EServiceDescriptorArchiveScheduleCanceled" },
-      ({ data }) =>
-        EServiceDescriptorArchiveScheduleCanceledV2.toBinary(data)
+    .with({ type: "EServiceDescriptorArchiveScheduleCanceled" }, ({ data }) =>
+      EServiceDescriptorArchiveScheduleCanceledV2.toBinary(data)
     )
     .with({ type: "EServiceDescriptorArchiveScheduleCompleted" }, ({ data }) =>
       EServiceDescriptorArchiveScheduleCompletedV2.toBinary(data)
