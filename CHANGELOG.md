@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.15
+
+### Added
+- Added `ArchivingScheduleV2` message and `ArchivingScopeV2` enum
+- Added `archivingSchedule` property to `EServiceDescriptorV2`
+- Added `archivingReason` property to `EServiceV2`
+- Added `ARCHIVING` and `ARCHIVING_SUSPENDED` states to `EServiceDescriptorStateV2`
+- Added archiving scheduled events:
+  - `EServiceArchivingScheduled`
+  - `EServiceArchivingCanceled`
+  - `EServiceArchivingCompleted`
+  - `EServiceDescriptorArchivingScheduled`
+  - `EServiceDescriptorArchivingCanceled`
+  - `EServiceDescriptorArchivingCompleted`
+
 ## 1.8.14
 
 ### Renamed
