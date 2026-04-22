@@ -10,12 +10,12 @@ All notable changes to this project will be documented in this file.
 - Added `archivingReason` property to `EServiceV2`
 - Added `ARCHIVING` and `ARCHIVING_SUSPENDED` states to `EServiceDescriptorStateV2`
 - Added archiving scheduled events:
-  - `EServiceArchiveScheduled`
-  - `EServiceArchiveScheduleCanceled`
-  - `EServiceArchiveScheduleCompleted`
-  - `EServiceDescriptorArchiveScheduled`
-  - `EServiceDescriptorArchiveScheduleCanceled`
-  - `EServiceDescriptorArchiveScheduleCompleted`
+  - `EServiceArchivingScheduled`
+  - `EServiceArchivingCanceled`
+  - `EServiceArchivingCompleted`
+  - `EServiceDescriptorArchivingScheduled`
+  - `EServiceDescriptorArchivingCanceled`
+  - `EServiceDescriptorArchivingCompleted`
 
 ## 1.8.14
 
