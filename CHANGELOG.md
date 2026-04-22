@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.15
+
+### Added archiving scheduled events:
+- `EServiceArchiveScheduleCanceled`
+- `EServiceArchiveScheduled`
+- `EServiceArchiveScheduleCompleted`
+- `EServiceDescriptorArchiveScheduled`
+- `EServiceDescriptorArchiveScheduleCanceled`
+- `EServiceDescriptorArchiveScheduleCompleted`
+
+### Added ArchivingScheduleV2 on EService:
+- Added `ArchivingScheduleV2` on `EService` protobuf model.
+
+### Added ArchivingScopeV2 on EService:
+- Added `ArchivingScopeV2` on `EService` protobuf model.
+
+### Added archivingSchedule on EServiceDescriptorV2:
+- Added `archivingSchedule` property to `EServiceDescriptorV2` on `EService` protobuf model.
+
+### Added archivingReason on EServiceV2:
+- Added `archivingSchedule` property to `EServiceDescriptorV2` on `EServiceV2` protobuf model.
+
+### Added Archiving states on EServiceDescriptorStateV2:
+- Added `ARCHIVING` property to `EServiceDescriptorStateV2` on `EServiceV2` protobuf model.
+- Added `ARCHIVING_SUSPENDED` property to `EServiceDescriptorStateV2` on `EServiceV2` protobuf model.
+
 ## 1.8.14
 
 ### Renamed
