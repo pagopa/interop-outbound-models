@@ -43,13 +43,13 @@ import {
   EServicePersonalDataFlagUpdatedAfterPublicationV2,
   EServicePersonalDataFlagUpdatedByTemplateUpdateV2,
   EServiceInstanceLabelUpdatedV2,
-  MaintenanceEServiceUpdatedV2,
   EServiceArchiveScheduledV2,
   EServiceArchiveScheduleCanceledV2,
   EServiceArchiveScheduleCompletedV2,
   EServiceDescriptorArchiveScheduledV2,
   EServiceDescriptorArchiveScheduleCanceledV2,
   EServiceDescriptorArchiveScheduleCompletedV2,
+  MaintenanceEServicePersonalDataFlagResetV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -195,8 +195,8 @@ export function eServiceEventToBinaryDataV2(
     .with({ type: "EServiceInstanceLabelUpdated" }, ({ data }) =>
       EServiceInstanceLabelUpdatedV2.toBinary(data)
     )
-    .with({ type: "MaintenanceEServiceUpdated" }, ({ data }) =>
-      MaintenanceEServiceUpdatedV2.toBinary(data)
+    .with({ type: "MaintenanceEServicePersonalDataFlagReset" }, ({ data }) =>
+      MaintenanceEServicePersonalDataFlagResetV2.toBinary(data)
     )
     .with({ type: "EServiceDescriptorArchiveScheduled" }, ({ data }) =>
       EServiceDescriptorArchiveScheduledV2.toBinary(data)
@@ -554,8 +554,8 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal("MaintenanceEServiceUpdated"),
-    data: protobufDecoder(MaintenanceEServiceUpdatedV2),
+    type: z.literal("MaintenanceEServicePersonalDataFlagReset"),
+    data: protobufDecoder(MaintenanceEServicePersonalDataFlagResetV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
