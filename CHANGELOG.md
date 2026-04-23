@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.16
+
+### Added
+- Added `startedAt` property to `ArchivingScheduleV2`
+
 ## 1.8.15
 
 ### Added
