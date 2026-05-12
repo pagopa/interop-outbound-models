@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.17
+
+### Added
+- Added `EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2` event to eservice events
+
 ## 1.8.16
 
 ### Added

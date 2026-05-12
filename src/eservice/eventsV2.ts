@@ -33,6 +33,7 @@ import {
   EServiceDescriptionUpdatedByTemplateUpdateV2,
   EServiceDescriptorQuotasUpdatedByTemplateUpdateV2,
   EServiceDescriptorAttributesUpdatedByTemplateUpdateV2,
+  EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2,
   EServiceDescriptorDocumentAddedByTemplateUpdateV2,
   EServiceDescriptorDocumentUpdatedByTemplateUpdateV2,
   EServiceDescriptorDocumentDeletedByTemplateUpdateV2,
@@ -170,6 +171,11 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceNameUpdatedByTemplateUpdate" }, ({ data }) =>
       EServiceNameUpdatedByTemplateUpdateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorAttributeDailyCallsPerConsumerUpdated" },
+      ({ data }) =>
+        EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2.toBinary(data)
     )
     .with(
       { type: "EServiceDescriptorAgreementApprovalPolicyUpdated" },
@@ -546,6 +552,16 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceInstanceLabelUpdated"),
     data: protobufDecoder(EServiceInstanceLabelUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorAttributeDailyCallsPerConsumerUpdated"),
+    data: protobufDecoder(
+      EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2
+    ),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
