@@ -7,6 +7,7 @@ import {
   EServiceModeV2,
   EServiceTechnologyV2,
   AgreementApprovalPolicyV2,
+  AttributeCertifiedDiscreteComparatorV2,
 } from "../src/index.js";
 
 describe("eservice-template", () => {
@@ -42,6 +43,11 @@ describe("eservice-template", () => {
                       {
                         id: "attr-id",
                         explicitAttributeVerification: false,
+                        discreteConfig: {
+                          threshold: 75,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.LTE,
+                        },
                       },
                     ],
                   },
