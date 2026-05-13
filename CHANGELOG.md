@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### attributi-certificati-discreti-1.0
+
+- Added `AttributeCertifiedDiscreteComparatorV2` enum
+- Added `EServiceAttributeCertifiedDiscreteConfigV2` with `threshold` and `comparator` properties
+- Added `discreteConfig` property to `EServiceAttributeValueV2`
+- Added `discreteConfig` property to `EServiceTemplateAttributeValueV2`
+- Added `TenantCertifiedDiscreteAttributeV2` with `discreteValue` property
+- Added `certifiedDiscreteAttribute` variant to `TenantAttributeV2`
+
 ## 1.8.14
 
 ### Renamed
