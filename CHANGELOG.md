@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - Added `discreteConfig` property to `EServiceTemplateAttributeValueV2`
 - Added `TenantCertifiedDiscreteAttributeV2` with `discreteValue` property
 - Added `certifiedDiscreteAttribute` variant to `TenantAttributeV2`
+- Added `certifiedDiscreteAttributes` property to `AgreementV1`
+- Added `certifiedDiscreteAttributes` property to `AgreementV2`
 
 ## 1.8.14
 
