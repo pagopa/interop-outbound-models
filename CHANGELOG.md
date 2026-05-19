@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## soglie-diffenziate-1.0
+
+### Added
+
+- Add the `EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2` event.
+- Add the relative serializer, schema and test.
+
 ## 1.8.14
 
 ### Renamed
