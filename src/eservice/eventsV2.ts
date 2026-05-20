@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { match } from "ts-pattern";
 import { z } from "zod";
 import { protobufDecoder } from "../utils.js";
@@ -50,6 +51,9 @@ import {
   EServiceArchivingCanceledV2,
   EServiceArchivingCompletedV2,
   MaintenanceEServicePersonalDataFlagResetV2,
+  EServiceDescriptorAsyncExchangeCallbackInterfaceAddedV2,
+  EServiceDescriptorAsyncExchangeCallbackInterfaceUpdatedV2,
+  EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -215,6 +219,21 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceArchivingCompleted" }, ({ data }) =>
       EServiceArchivingCompletedV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorAsyncExchangeCallbackInterfaceAdded" },
+      ({ data }) =>
+        EServiceDescriptorAsyncExchangeCallbackInterfaceAddedV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated" },
+      ({ data }) =>
+        EServiceDescriptorAsyncExchangeCallbackInterfaceUpdatedV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted" },
+      ({ data }) =>
+        EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -602,6 +621,36 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceArchivingCompleted"),
     data: protobufDecoder(EServiceArchivingCompletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorAsyncExchangeCallbackInterfaceAdded"),
+    data: protobufDecoder(
+      EServiceDescriptorAsyncExchangeCallbackInterfaceAddedV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated"),
+    data: protobufDecoder(
+      EServiceDescriptorAsyncExchangeCallbackInterfaceUpdatedV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted"),
+    data: protobufDecoder(
+      EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2
+    ),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
