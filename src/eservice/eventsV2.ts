@@ -50,6 +50,7 @@ import {
   EServiceArchivingCanceledV2,
   EServiceArchivingCompletedV2,
   MaintenanceEServicePersonalDataFlagResetV2,
+  MaintenanceEServiceDescriptorUnarchivedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -215,6 +216,9 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "EServiceArchivingCompleted" }, ({ data }) =>
       EServiceArchivingCompletedV2.toBinary(data)
+    )
+    .with({ type: "MaintenanceEServiceDescriptorUnarchived" }, ({ data }) =>
+      MaintenanceEServiceDescriptorUnarchivedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -602,6 +606,14 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("EServiceArchivingCompleted"),
     data: protobufDecoder(EServiceArchivingCompletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("MaintenanceEServiceDescriptorUnarchived"),
+    data: protobufDecoder(MaintenanceEServiceDescriptorUnarchivedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),

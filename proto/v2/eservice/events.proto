@@ -236,3 +236,8 @@ message EServiceInstanceLabelUpdatedV2 {
 message MaintenanceEServicePersonalDataFlagResetV2 {
   EServiceV2 eservice = 1;
 }
+
+message MaintenanceEServiceDescriptorUnarchivedV2 {
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
+}
