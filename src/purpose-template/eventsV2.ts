@@ -9,6 +9,8 @@ import {
   PurposeTemplateDraftDeletedV2,
   PurposeTemplateDraftUpdatedV2,
   PurposeTemplateEServiceLinkedV2,
+  PurposeTemplateEServiceTemplateLinkedV2,
+  PurposeTemplateEServiceTemplateUnlinkedV2,
   PurposeTemplateEServiceUnlinkedV2,
   PurposeTemplatePublishedV2,
   PurposeTemplateSuspendedV2,
@@ -30,6 +32,12 @@ export function purposeTemplateEventToBinaryDataV2(
     )
     .with({ type: "PurposeTemplateEServiceUnlinked" }, ({ data }) =>
       PurposeTemplateEServiceUnlinkedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplateEServiceTemplateLinked" }, ({ data }) =>
+      PurposeTemplateEServiceTemplateLinkedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplateEServiceTemplateUnlinked" }, ({ data }) =>
+      PurposeTemplateEServiceTemplateUnlinkedV2.toBinary(data)
     )
     .with({ type: "PurposeTemplateDraftUpdated" }, ({ data }) =>
       PurposeTemplateDraftUpdatedV2.toBinary(data)
@@ -88,6 +96,22 @@ export const PurposeTemplateEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("PurposeTemplateEServiceUnlinked"),
     data: protobufDecoder(PurposeTemplateEServiceUnlinkedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplateEServiceTemplateLinked"),
+    data: protobufDecoder(PurposeTemplateEServiceTemplateLinkedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplateEServiceTemplateUnlinked"),
+    data: protobufDecoder(PurposeTemplateEServiceTemplateUnlinkedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.string(),

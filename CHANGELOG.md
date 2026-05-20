@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.18
+
+### Added
+- Added `PurposeTemplateEServiceTemplateLinkedV2` event
+- Added `PurposeTemplateEServiceTemplateUnlinkedV2` event
+
 ## 1.8.17
 
 ### Restore
