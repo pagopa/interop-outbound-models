@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/interop-outbound-models",
-  "version": "attributi-certificati-discreti-1.0",
+  "version": "1.8.18.attributi-certificati-discreti.0",
   "description": "PagoPA Interoperability outbound models",
   "main": "dist",
   "type": "module",
