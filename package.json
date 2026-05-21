@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/interop-outbound-models",
-  "version": "scambi-async_purpose-template-1.2",
+  "version": "1.8.18-scambi.async.purpose.template.0",
   "description": "PagoPA Interoperability outbound models",
   "main": "dist",
   "type": "module",

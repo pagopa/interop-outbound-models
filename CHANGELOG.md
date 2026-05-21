@@ -7,6 +7,17 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added `PurposeTemplateEServiceTemplateLinkedV2` event
 - Added `PurposeTemplateEServiceTemplateUnlinkedV2` event
+- Added `AsyncExchangePropertiesV2` message
+- Added `asyncExchange` property to `EServiceV2` and `EServiceTemplateV2`
+- Added `asyncExchangeCallbackInterface` and `asyncExchangeProperties` properties to `EServiceDescriptorV2` and `EServiceTemplateVersionV2`
+- Added async exchange callback interface events for `EService`:
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceAdded`
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated`
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted`
+- Added async exchange callback interface events for `EServiceTemplate`:
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceAdded`
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdated`
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeleted`
 
 ## 1.8.17
 
