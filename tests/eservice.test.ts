@@ -3,12 +3,12 @@ import { describe, it, expect } from "vitest";
 import {
   encodeOutboundEServiceEvent,
   decodeOutboundEServiceEvent,
+  EServiceEvent,
   EServiceModeV2,
   EServiceTechnologyV2,
   EServiceDescriptorStateV2,
   AgreementApprovalPolicyV2,
 } from "../src/index.js";
-import type { EServiceEvent } from "../src/index.js";
 
 describe("eservice", () => {
   it("should correctly encode and decode EServiceDescriptorArchived event", () => {
