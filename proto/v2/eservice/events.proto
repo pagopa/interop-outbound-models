@@ -234,3 +234,35 @@ message EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2 {
   string attributeId = 3;
   int32 dailyCallsPerConsumer = 4;
 }
+
+message EServiceArchivingScheduledV2 {
+  EServiceV2 eservice = 1;
+}
+
+message EServiceArchivingCanceledV2 {
+  EServiceV2 eservice = 1;
+}
+
+message EServiceArchivingCompletedV2 {
+  EServiceV2 eservice = 1;
+}
+
+message EServiceDescriptorArchivingScheduledV2 {
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
+}
+
+message EServiceDescriptorArchivingCanceledV2 {
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
+}
+
+message EServiceDescriptorArchivingCompletedV2 {
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
+}
+
+message MaintenanceEServiceDescriptorUnarchivedV2 {
+  string descriptorId = 1;
+  EServiceV2 eservice = 2;
+}

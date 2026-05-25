@@ -49,6 +49,13 @@ import {
   EServiceDescriptorAsyncExchangeCallbackInterfaceAddedV2,
   EServiceDescriptorAsyncExchangeCallbackInterfaceUpdatedV2,
   EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2,
+  EServiceDescriptorArchivingScheduledV2,
+  EServiceDescriptorArchivingCanceledV2,
+  EServiceDescriptorArchivingCompletedV2,
+  EServiceArchivingScheduledV2,
+  EServiceArchivingCanceledV2,
+  EServiceArchivingCompletedV2,
+  MaintenanceEServiceDescriptorUnarchivedV2,
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -216,6 +223,27 @@ export function eServiceEventToBinaryDataV2(
       { type: "EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted" },
       ({ data }) =>
         EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingScheduled" }, ({ data }) =>
+      EServiceArchivingScheduledV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingCanceled" }, ({ data }) =>
+      EServiceArchivingCanceledV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingCompleted" }, ({ data }) =>
+      EServiceArchivingCompletedV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingScheduled" }, ({ data }) =>
+      EServiceDescriptorArchivingScheduledV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingCanceled" }, ({ data }) =>
+      EServiceDescriptorArchivingCanceledV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingCompleted" }, ({ data }) =>
+      EServiceDescriptorArchivingCompletedV2.toBinary(data)
+    )
+    .with({ type: "MaintenanceEServiceDescriptorUnarchived" }, ({ data }) =>
+      MaintenanceEServiceDescriptorUnarchivedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -595,6 +623,62 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     data: protobufDecoder(
       EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2
     ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingScheduled"),
+    data: protobufDecoder(EServiceArchivingScheduledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingCanceled"),
+    data: protobufDecoder(EServiceArchivingCanceledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingCompleted"),
+    data: protobufDecoder(EServiceArchivingCompletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingScheduled"),
+    data: protobufDecoder(EServiceDescriptorArchivingScheduledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingCanceled"),
+    data: protobufDecoder(EServiceDescriptorArchivingCanceledV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingCompleted"),
+    data: protobufDecoder(EServiceDescriptorArchivingCompletedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("MaintenanceEServiceDescriptorUnarchived"),
+    data: protobufDecoder(MaintenanceEServiceDescriptorUnarchivedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
