@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.19
+
+### Added
+
+- Add the `EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2` event.
+- Add the relative serializer, schema and test.
+
 ## 1.8.18
 
 ### Added
+
 - Added `PurposeTemplateEServiceTemplateLinkedV2` event
 - Added `PurposeTemplateEServiceTemplateUnlinkedV2` event
 - Added `AsyncExchangePropertiesV2` message
@@ -22,16 +30,19 @@ All notable changes to this project will be documented in this file.
 ## 1.8.17
 
 ### Restore
+
 - Revert recent changes to ensure stability
 
 ## 1.8.16
 
 ### Added
+
 - Added `startedAt` property to `ArchivingScheduleV2`
 
 ## 1.8.15
 
 ### Added
+
 - Added `ArchivingScheduleV2` message and `ArchivingScopeV2` enum
 - Added `archivingSchedule` property to `EServiceDescriptorV2`
 - Added `archivingReason` property to `EServiceV2`
@@ -47,67 +58,79 @@ All notable changes to this project will be documented in this file.
 ## 1.8.14
 
 ### Renamed
+
 - Renamed MaintenanceEServiceUpdated event into MaintenanceEServicePersonalDataFlagReset
 
 ## 1.8.13
 
 ### Added
+
 - Add MaintenanceEServiceUpdated event
 
 ## 1.8.12
 
 ### Moved selfcareInstitutionType from ExternalId to TenantV2
+
 - Moved `selfcareInstitutionType` property from `ExternalId` to `TenantV2` protobuf model.
 
 ## 1.8.11
 
 ### Added selfcareInstitutionType to ExternalId on TenantV2
+
 - Added `selfcareInstitutionType` property to `ExternalId` on `TenantV2` protobuf model.
 
 ## 1.8.10
+
 ### Feature: instanceLabel - fix
 
 ## 1.8.9
 
 ### Feature: instanceLabel
+
 - Added `instanceLabel` in eservice
 - Added `EServiceInstanceLabelUpdatedV2` event
 
 ## 1.8.8
 
 ### Separated EServiceTemplate attributes from EService attributes
+
 - Created dedicated attribute types for EServiceTemplate: `EServiceTemplateAttributeValueV2`, `EServiceTemplateAttributeV2`, `EServiceTemplateAttributesV2`
 - Added test coverage for EServiceTemplate event encoding/decoding
 
 ## 1.8.7
 
 ### EServiceDescriptorAttributeV2 Refactor
+
 - renamed `dailyCalls` field to `dailyCallsPerConsumer`
 
 ## 1.8.6
 
 ### Added support for Custom Thresholds in EServiceDescriptor attributes
+
 - Added `dailyCalls` property to `EServiceDescriptorAttributeV2` protobuf model.
 
 ## 1.8.5
 
 ### Fixed target tenant kind Protobuf
+
 - Fixed target tenant kind Protobuf
 
 ## 1.8.4
 
 ### Updated purpose template's target tenant kind
+
 - Updated target tenant kind in `PurposeTemplateV2`
 
 ## 1.8.3
 
 ### Fixed
-- Fixed missing declarations of events `RiskAnalysisTemplate*V2`
 
+- Fixed missing declarations of events `RiskAnalysisTemplate*V2`
 
 ## 1.8.2
 
 ### Added purpose template events about document archiving:
+
 - `RiskAnalysisTemplateDocumentGeneratedV2`
 - `RiskAnalysisTemplateSignedDocumentGeneratedV2`
 
@@ -121,18 +144,19 @@ All notable changes to this project will be documented in this file.
 ## 1.8.0
 
 ### Added purpose template events:
-  - `PurposeTemplateAddedV2`
-  - `PurposeTemplateEServiceLinkedV2`
-  - `PurposeTemplateEServiceUnlinkedV2`
-  - `PurposeTemplateDraftUpdatedV2`
-  - `PurposeTemplateDraftDeletedV2`
-  - `PurposeTemplatePublishedV2`
-  - `PurposeTemplateUnsuspendedV2`
-  - `PurposeTemplateSuspendedV2`
-  - `PurposeTemplateArchivedV2`
-  - `PurposeTemplateAnnotationDocumentAddedV2`
-  - `PurposeTemplateAnnotationDocumentDeletedV2`
-  - `PurposeTemplateAnnotationDocumentUpdatedV2`
+
+- `PurposeTemplateAddedV2`
+- `PurposeTemplateEServiceLinkedV2`
+- `PurposeTemplateEServiceUnlinkedV2`
+- `PurposeTemplateDraftUpdatedV2`
+- `PurposeTemplateDraftDeletedV2`
+- `PurposeTemplatePublishedV2`
+- `PurposeTemplateUnsuspendedV2`
+- `PurposeTemplateSuspendedV2`
+- `PurposeTemplateArchivedV2`
+- `PurposeTemplateAnnotationDocumentAddedV2`
+- `PurposeTemplateAnnotationDocumentDeletedV2`
+- `PurposeTemplateAnnotationDocumentUpdatedV2`
 
 ## 1.7.2
 

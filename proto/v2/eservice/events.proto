@@ -227,3 +227,10 @@ message EServiceDescriptorAsyncExchangeCallbackInterfaceDeletedV2 {
   string documentId = 2;
   EServiceV2 eservice = 3;
 }
+
+message EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2 {
+  EServiceV2 eservice = 1;
+  string descriptorId = 2;
+  string attributeId = 3;
+  int32 dailyCallsPerConsumer = 4;
+}

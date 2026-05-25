@@ -232,5 +232,65 @@ describe("eservice", () => {
     expect(decoded).toEqual(event);
   });
 
+  it("should correctly round-trip EServiceDescriptorAttributeDailyCallsPerConsumerUpdated event with dailyCallsPerConsumer", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorAttributeDailyCallsPerConsumerUpdated",
+      data: {
+        descriptorId: "descriptor-id",
+        attributeId: "attribute-id",
+        dailyCallsPerConsumer: 25,
+        eservice: {
+          id: "eservice-id",
+          createdAt: 1n,
+          producerId: "producer-id",
+          mode: EServiceModeV2.DELIVER,
+          description: "test description",
+          name: "test eservice",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "descriptor-id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "attribute-id",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 25,
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+            },
+          ],
+        },
+      },
+      stream_id: "stream-id",
+      timestamp: new Date(),
+      version: 2,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
   // TODO: Add more tests for other event types
 });
