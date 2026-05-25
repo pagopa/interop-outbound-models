@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### 1.8.19.attributi-certificati-discreti.1
+
+- Added `TenantCertifiedDiscreteAttributeAssignedV2` message to `TenantEventV2`
+- Added `TenantCertifiedDiscreteAttributeRevokedV2` message to `TenantEventV2`
+- Added `TenantCertifiedDiscreteAttributeUpdatedV2` message to `TenantEventV2`
+- Added `TenantRemoteIdAssignedV2` message to `TenantEventV2`
+
 ### 1.8.18.attributi-certificati-discreti.0
 
 - Added `AttributeCertifiedDiscreteComparatorV2` enum

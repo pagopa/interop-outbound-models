@@ -22,7 +22,7 @@ import {
   TenantCertifiedDiscreteAttributeAssignedV2,
   TenantCertifiedDiscreteAttributeRevokedV2,
   TenantCertifiedDiscreteAttributeUpdatedV2,
-  TenantRemoteIdAssignedV2
+  TenantRemoteIdAssignedV2,
 } from "../gen/v2/tenant/events.js";
 import { protobufDecoder } from "../utils.js";
 
