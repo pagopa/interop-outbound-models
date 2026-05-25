@@ -19,6 +19,10 @@ import {
   TenantDelegatedProducerFeatureRemovedV2,
   TenantDelegatedConsumerFeatureAddedV2,
   TenantDelegatedConsumerFeatureRemovedV2,
+  TenantCertifiedDiscreteAttributeAssignedV2,
+  TenantCertifiedDiscreteAttributeRevokedV2,
+  TenantCertifiedDiscreteAttributeUpdatedV2,
+  TenantRemoteIdAssignedV2,
 } from "../gen/v2/tenant/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -77,6 +81,18 @@ export function tenantEventToBinaryDataV2(event: TenantEventV2): Uint8Array {
     )
     .with({ type: "TenantDelegatedConsumerFeatureRemoved" }, ({ data }) =>
       TenantDelegatedConsumerFeatureRemovedV2.toBinary(data)
+    )
+    .with({ type: "TenantCertifiedDiscreteAttributeAssigned" }, ({ data }) =>
+      TenantCertifiedDiscreteAttributeAssignedV2.toBinary(data)
+    )
+    .with({ type: "TenantCertifiedDiscreteAttributeRevoked" }, ({ data }) =>
+      TenantCertifiedDiscreteAttributeRevokedV2.toBinary(data)
+    )
+    .with({ type: "TenantCertifiedDiscreteAttributeUpdated" }, ({ data }) =>
+      TenantCertifiedDiscreteAttributeUpdatedV2.toBinary(data)
+    )
+    .with({ type: "TenantRemoteIdAssigned" }, ({ data }) =>
+      TenantRemoteIdAssignedV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -222,6 +238,38 @@ export const TenantEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("TenantDelegatedConsumerFeatureRemoved"),
     data: protobufDecoder(TenantDelegatedConsumerFeatureRemovedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantCertifiedDiscreteAttributeAssigned"),
+    data: protobufDecoder(TenantCertifiedDiscreteAttributeAssignedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantCertifiedDiscreteAttributeRevoked"),
+    data: protobufDecoder(TenantCertifiedDiscreteAttributeRevokedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantCertifiedDiscreteAttributeUpdated"),
+    data: protobufDecoder(TenantCertifiedDiscreteAttributeUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("TenantRemoteIdAssigned"),
+    data: protobufDecoder(TenantRemoteIdAssignedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
