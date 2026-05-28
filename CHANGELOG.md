@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.18.attributi-certificati-discreti
+
+### 1.8.18.attributi-certificati-discreti.2
+
+- Removed `certifiedDiscreteAttributes` field number 22 from `AgreementV1` protobuf model
+- Removed the reserved field number 21 from `AgreementV1` protobuf model
+
 ### 1.8.18.attributi-certificati-discreti.1
 
 - Added `TenantCertifiedDiscreteAttributeAssignedV2` message to `TenantEventV2`
@@ -122,7 +129,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.2
 
-### Added purpose template events about document archiving:
+### Added purpose template events about document archiving
 
 - `RiskAnalysisTemplateDocumentGeneratedV2`
 - `RiskAnalysisTemplateSignedDocumentGeneratedV2`
@@ -136,7 +143,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.0
 
-### Added purpose template events:
+### Added purpose template events
 
 - `PurposeTemplateAddedV2`
 - `PurposeTemplateEServiceLinkedV2`
