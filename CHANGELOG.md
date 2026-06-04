@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.18.attributi-certificati-discreti
 
+### 1.8.18.attributi-certificati-discreti.3
+
+- Added `MaintenanceTenantRemoteIdDeletedV2` message to `TenantEventV2`
+
 ### 1.8.18.attributi-certificati-discreti.2
 
 - Removed `certifiedDiscreteAttributes` field number 22 from `AgreementV1` protobuf model
