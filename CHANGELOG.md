@@ -2,26 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.8.18.attributi-certificati-discreti
-
-### 1.8.18.attributi-certificati-discreti.3
+## 1.8.21
 
 - Added `MaintenanceTenantRemoteIdDeletedV2` message to `TenantEventV2`
-
-### 1.8.18.attributi-certificati-discreti.2
-
-- Removed `certifiedDiscreteAttributes` field number 22 from `AgreementV1` protobuf model
-- Removed the reserved field number 21 from `AgreementV1` protobuf model
-
-### 1.8.18.attributi-certificati-discreti.1
-
 - Added `TenantCertifiedDiscreteAttributeAssignedV2` message to `TenantEventV2`
 - Added `TenantCertifiedDiscreteAttributeRevokedV2` message to `TenantEventV2`
 - Added `TenantCertifiedDiscreteAttributeUpdatedV2` message to `TenantEventV2`
 - Added `TenantRemoteIdAssignedV2` message to `TenantEventV2`
-
-### 1.8.18.attributi-certificati-discreti.0
-
 - Added `AttributeCertifiedDiscreteComparatorV2` enum
 - Added `EServiceAttributeCertifiedDiscreteConfigV2` with `threshold` and `comparator` properties
 - Added `discreteConfig` property to `EServiceAttributeValueV2`
@@ -30,6 +17,48 @@ All notable changes to this project will be documented in this file.
 - Added `certifiedDiscreteAttribute` variant to `TenantAttributeV2`
 - Added `certifiedDiscreteAttributes` property to `AgreementV1`
 - Added `certifiedDiscreteAttributes` property to `AgreementV2`
+
+## 1.8.20
+
+### Added
+
+- Added `ArchivingScheduleV2` message and `ArchivingScopeV2` enum
+- Added `archivingSchedule` property to `EServiceDescriptorV2`
+- Added `archivingReason` property to `EServiceV2`
+- Added `ARCHIVING` and `ARCHIVING_SUSPENDED` states to `EServiceDescriptorStateV2`
+- Added archiving scheduled events:
+  - `EServiceArchivingScheduled`
+  - `EServiceArchivingCanceled`
+  - `EServiceArchivingCompleted`
+  - `EServiceDescriptorArchivingScheduled`
+  - `EServiceDescriptorArchivingCanceled`
+  - `EServiceDescriptorArchivingCompleted`
+- Added `MaintenanceEServiceDescriptorUnarchivedV2` event
+
+## 1.8.19
+
+### Added
+
+- Add the `EServiceDescriptorAttributeDailyCallsPerConsumerUpdatedV2` event.
+- Add the relative serializer, schema and test.
+
+## 1.8.18
+
+### Added
+
+- Added `PurposeTemplateEServiceTemplateLinkedV2` event
+- Added `PurposeTemplateEServiceTemplateUnlinkedV2` event
+- Added `AsyncExchangePropertiesV2` message
+- Added `asyncExchange` property to `EServiceV2` and `EServiceTemplateV2`
+- Added `asyncExchangeCallbackInterface` and `asyncExchangeProperties` properties to `EServiceDescriptorV2` and `EServiceTemplateVersionV2`
+- Added async exchange callback interface events for `EService`:
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceAdded`
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated`
+  - `EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted`
+- Added async exchange callback interface events for `EServiceTemplate`:
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceAdded`
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdated`
+  - `EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeleted`
 
 ## 1.8.17
 
@@ -133,7 +162,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.2
 
-### Added purpose template events about document archiving
+### Added purpose template events about document archiving:
 
 - `RiskAnalysisTemplateDocumentGeneratedV2`
 - `RiskAnalysisTemplateSignedDocumentGeneratedV2`
@@ -147,7 +176,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.0
 
-### Added purpose template events
+### Added purpose template events:
 
 - `PurposeTemplateAddedV2`
 - `PurposeTemplateEServiceLinkedV2`
