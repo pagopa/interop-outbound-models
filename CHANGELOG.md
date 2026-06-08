@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.21
 
+### Added
+
 - Added `MaintenanceTenantRemoteIdDeletedV2` message to `TenantEventV2`
 - Added `TenantCertifiedDiscreteAttributeAssignedV2` message to `TenantEventV2`
 - Added `TenantCertifiedDiscreteAttributeRevokedV2` message to `TenantEventV2`
@@ -33,7 +35,7 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorArchivingScheduled`
   - `EServiceDescriptorArchivingCanceled`
   - `EServiceDescriptorArchivingCompleted`
-- Added `MaintenanceEServiceDescriptorUnarchivedV2` event
+  - Added `MaintenanceEServiceDescriptorUnarchivedV2` event
 
 ## 1.8.19
 

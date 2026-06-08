@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { describe, it, expect } from "vitest";
 import {
   encodeOutboundEServiceEvent,
@@ -66,6 +67,229 @@ describe("eservice", () => {
       stream_id: "123",
       timestamp: new Date(),
       version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceDescriptorAsyncExchangeCallbackInterfaceAdded event with all async exchange fields populated", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorAsyncExchangeCallbackInterfaceAdded",
+      data: {
+        descriptorId: "descriptor-id",
+        documentId: "callback-doc-id",
+        eservice: {
+          id: "eservice-id",
+          createdAt: 1n,
+          producerId: "producer-id",
+          mode: EServiceModeV2.DELIVER,
+          description: "eservice description",
+          name: "eservice name",
+          technology: EServiceTechnologyV2.REST,
+          asyncExchange: true,
+          descriptors: [
+            {
+              id: "descriptor-id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+              asyncExchangeCallbackInterface: {
+                id: "callback-doc-id",
+                name: "callback.yaml",
+                contentType: "application/yaml",
+                checksum: "abc123",
+                uploadDate: "2025-01-01T00:00:00Z",
+                prettyName: "Callback Interface",
+              },
+              asyncExchangeProperties: {
+                responseTime: 5000,
+                resourceAvailableTime: 60000,
+                confirmation: true,
+                bulk: false,
+                maxResultSet: 100,
+              },
+            },
+          ],
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorAsyncExchangeCallbackInterfaceUpdated",
+      data: {
+        descriptorId: "descriptor-id",
+        documentId: "callback-doc-id",
+        eservice: {
+          id: "eservice-id",
+          createdAt: 1n,
+          producerId: "producer-id",
+          mode: EServiceModeV2.DELIVER,
+          description: "eservice description",
+          name: "eservice name",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "descriptor-id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+            },
+          ],
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorAsyncExchangeCallbackInterfaceDeleted",
+      data: {
+        descriptorId: "descriptor-id",
+        documentId: "callback-doc-id",
+        eservice: {
+          id: "eservice-id",
+          createdAt: 1n,
+          producerId: "producer-id",
+          mode: EServiceModeV2.DELIVER,
+          description: "eservice description",
+          name: "eservice name",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "descriptor-id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+            },
+          ],
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly round-trip EServiceDescriptorAttributeDailyCallsPerConsumerUpdated event with dailyCallsPerConsumer", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorAttributeDailyCallsPerConsumerUpdated",
+      data: {
+        descriptorId: "descriptor-id",
+        attributeId: "attribute-id",
+        dailyCallsPerConsumer: 25,
+        eservice: {
+          id: "eservice-id",
+          createdAt: 1n,
+          producerId: "producer-id",
+          mode: EServiceModeV2.DELIVER,
+          description: "test description",
+          name: "test eservice",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "descriptor-id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "attribute-id",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 25,
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+            },
+          ],
+        },
+      },
+      stream_id: "stream-id",
+      timestamp: new Date(),
+      version: 2,
     };
 
     const encoded = encodeOutboundEServiceEvent(event);
