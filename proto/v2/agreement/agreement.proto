@@ -32,8 +32,8 @@ message AgreementSignedContractV2 {
   string name = 2;
   string prettyName = 3;
   string contentType = 4;
-  int64 createdAt = 6;
-  optional int64 signedAt = 7;
+  int64 createdAt = 5;
+  optional int64 signedAt = 6;
 }
 
 message VerifiedAttributeV2 {
