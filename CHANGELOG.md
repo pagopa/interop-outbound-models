@@ -35,7 +35,7 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorArchivingScheduled`
   - `EServiceDescriptorArchivingCanceled`
   - `EServiceDescriptorArchivingCompleted`
-  - Added `MaintenanceEServiceDescriptorUnarchivedV2` event
+- Added `MaintenanceEServiceDescriptorUnarchivedV2` event
 
 ## 1.8.19
 
