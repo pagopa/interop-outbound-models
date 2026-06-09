@@ -2,9 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.21
+
+### Added
+
+- Added `MaintenanceTenantRemoteIdDeletedV2` message to `TenantEventV2`
+- Added `TenantCertifiedDiscreteAttributeAssignedV2` message to `TenantEventV2`
+- Added `TenantCertifiedDiscreteAttributeRevokedV2` message to `TenantEventV2`
+- Added `TenantCertifiedDiscreteAttributeUpdatedV2` message to `TenantEventV2`
+- Added `TenantRemoteIdAssignedV2` message to `TenantEventV2`
+- Added `AttributeCertifiedDiscreteComparatorV2` enum
+- Added `EServiceAttributeCertifiedDiscreteConfigV2` with `threshold` and `comparator` properties
+- Added `discreteConfig` property to `EServiceAttributeValueV2`
+- Added `discreteConfig` property to `EServiceTemplateAttributeValueV2`
+- Added `TenantCertifiedDiscreteAttributeV2` with `discreteValue` property
+- Added `certifiedDiscreteAttribute` variant to `TenantAttributeV2`
+- Added `certifiedDiscreteAttributes` property to `AgreementV1`
+- Added `certifiedDiscreteAttributes` property to `AgreementV2`
+
 ## 1.8.20
 
 ### Added
+
 - Added `ArchivingScheduleV2` message and `ArchivingScopeV2` enum
 - Added `archivingSchedule` property to `EServiceDescriptorV2`
 - Added `archivingReason` property to `EServiceV2`
@@ -16,8 +35,7 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorArchivingScheduled`
   - `EServiceDescriptorArchivingCanceled`
   - `EServiceDescriptorArchivingCompleted`
- - Added `MaintenanceEServiceDescriptorUnarchivedV2` event 
-  
+- Added `MaintenanceEServiceDescriptorUnarchivedV2` event
 
 ## 1.8.19
 

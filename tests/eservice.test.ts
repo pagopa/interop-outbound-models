@@ -8,6 +8,7 @@ import {
   EServiceTechnologyV2,
   EServiceDescriptorStateV2,
   AgreementApprovalPolicyV2,
+  AttributeCertifiedDiscreteComparatorV2,
 } from "../src/index.js";
 
 describe("eservice", () => {
@@ -46,6 +47,11 @@ describe("eservice", () => {
                         id: "test",
                         explicitAttributeVerification: true,
                         dailyCallsPerConsumer: 10,
+                        discreteConfig: {
+                          threshold: 50,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.GTE,
+                        },
                       },
                     ],
                   },
