@@ -22,6 +22,9 @@ import {
   EServiceTemplateVersionPublishedV2,
   EServiceTemplateVersionQuotasUpdatedV2,
   EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2,
+  EServiceTemplateVersionAsyncExchangeCallbackInterfaceAddedV2,
+  EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdatedV2,
+  EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeletedV2,
 } from "../gen/v2/eservice-template/events.js";
 import { protobufDecoder } from "../utils.js";
 
@@ -93,6 +96,27 @@ export function eserviceTemplateEventToBinaryDataV2(
       { type: "EServiceTemplatePersonalDataFlagUpdatedAfterPublication" },
       ({ data }) =>
         EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceTemplateVersionAsyncExchangeCallbackInterfaceAdded" },
+      ({ data }) =>
+        EServiceTemplateVersionAsyncExchangeCallbackInterfaceAddedV2.toBinary(
+          data
+        )
+    )
+    .with(
+      { type: "EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdated" },
+      ({ data }) =>
+        EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdatedV2.toBinary(
+          data
+        )
+    )
+    .with(
+      { type: "EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeleted" },
+      ({ data }) =>
+        EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeletedV2.toBinary(
+          data
+        )
     )
     .exhaustive();
 }
@@ -263,6 +287,42 @@ export const EServiceTemplateEventV2 = z.discriminatedUnion("type", [
     type: z.literal("EServiceTemplatePersonalDataFlagUpdatedAfterPublication"),
     data: protobufDecoder(
       EServiceTemplatePersonalDataFlagUpdatedAfterPublicationV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal(
+      "EServiceTemplateVersionAsyncExchangeCallbackInterfaceAdded"
+    ),
+    data: protobufDecoder(
+      EServiceTemplateVersionAsyncExchangeCallbackInterfaceAddedV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal(
+      "EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdated"
+    ),
+    data: protobufDecoder(
+      EServiceTemplateVersionAsyncExchangeCallbackInterfaceUpdatedV2
+    ),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal(
+      "EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeleted"
+    ),
+    data: protobufDecoder(
+      EServiceTemplateVersionAsyncExchangeCallbackInterfaceDeletedV2
     ),
     stream_id: z.string(),
     version: z.number(),
