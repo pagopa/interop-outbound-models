@@ -56,6 +56,12 @@ import {
   EServiceArchivingCanceledV2,
   EServiceArchivingCompletedV2,
   MaintenanceEServiceDescriptorUnarchivedV2,
+  EServiceArchivingRequestedByDelegateV2,
+  EServiceArchivingRequestRejectedByDelegatorV2,
+  EServiceArchivingRequestApprovedByDelegatorV2,
+  EServiceDescriptorArchivingRequestedByDelegateV2,
+  EServiceDescriptorArchivingRequestRejectedByDelegatorV2,
+  EServiceDescriptorArchivingRequestApprovedByDelegatorV2
 } from "../gen/v2/eservice/events.js";
 
 export function eServiceEventToBinaryDataV2(
@@ -244,6 +250,28 @@ export function eServiceEventToBinaryDataV2(
     )
     .with({ type: "MaintenanceEServiceDescriptorUnarchived" }, ({ data }) =>
       MaintenanceEServiceDescriptorUnarchivedV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingRequestedByDelegate" }, ({ data }) =>
+      EServiceArchivingRequestedByDelegateV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingRequestRejectedByDelegator" }, ({ data }) =>
+      EServiceArchivingRequestRejectedByDelegatorV2.toBinary(data)
+    )
+    .with({ type: "EServiceArchivingRequestApprovedByDelegator" }, ({ data }) =>
+      EServiceArchivingRequestApprovedByDelegatorV2.toBinary(data)
+    )
+    .with({ type: "EServiceDescriptorArchivingRequestedByDelegate" }, ({ data }) =>
+      EServiceDescriptorArchivingRequestedByDelegateV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorArchivingRequestRejectedByDelegator" },
+      ({ data }) =>
+        EServiceDescriptorArchivingRequestRejectedByDelegatorV2.toBinary(data)
+    )
+    .with(
+      { type: "EServiceDescriptorArchivingRequestApprovedByDelegator" },
+      ({ data }) =>
+        EServiceDescriptorArchivingRequestApprovedByDelegatorV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -683,6 +711,54 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     version: z.number(),
     timestamp: z.coerce.date(),
   }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingRequestedByDelegate"),
+    data: protobufDecoder(EServiceArchivingRequestedByDelegateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingRequestRejectedByDelegator"),
+    data: protobufDecoder(EServiceArchivingRequestRejectedByDelegatorV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceArchivingRequestApprovedByDelegator"),
+    data: protobufDecoder(EServiceArchivingRequestApprovedByDelegatorV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingRequestedByDelegate"),
+    data: protobufDecoder(EServiceDescriptorArchivingRequestedByDelegateV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingRequestRejectedByDelegator"),
+    data: protobufDecoder(EServiceDescriptorArchivingRequestRejectedByDelegatorV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("EServiceDescriptorArchivingRequestApprovedByDelegator"),
+    data: protobufDecoder(EServiceDescriptorArchivingRequestApprovedByDelegatorV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  })
 ]);
 
 export type EServiceEventV2 = z.infer<typeof EServiceEventV2>;
