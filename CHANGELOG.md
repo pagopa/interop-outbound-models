@@ -1,6 +1,9 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## 1.8.22
+
+- Added `gracePeriodDays` property to `ArchivingScheduleV2`
 
 ## 1.8.21
 
