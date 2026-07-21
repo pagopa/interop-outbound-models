@@ -153,6 +153,8 @@ enum ArchivingScopeV2 {
 }
 
 enum GracePeriodDaysV2 {
+  // IMPORTANT: Must remain 0 for backwards compatibility.
+  // Legacy messages without gracePeriodDays decode to this value
   GRACE_PERIOD_90_DAYS = 0;
   GRACE_PERIOD_30_DAYS = 1;
   GRACE_PERIOD_60_DAYS = 2;
