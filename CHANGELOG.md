@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
   - `EServiceDescriptorArchivingRequestRejectedByDelegatorV2`
   - `EServiceDescriptorArchivingRequestApprovedByDelegatorV2`
   - `EServiceDescriptorArchivingRequestCanceledByDelegateV2`
+  - `EServiceArchivingRequestCanceledByRevokedDelegationV2`
   - `EServiceArchivingRequestedByDelegateV2`
   - `EServiceArchivingRequestRejectedByDelegatorV2`
   - `EServiceArchivingRequestApprovedByDelegatorV2`
