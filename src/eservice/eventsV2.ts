@@ -802,7 +802,9 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   z.object({
     event_version: z.literal(2),
     type: z.literal("EServiceArchivingRequestCanceledByRevokedDelegation"),
-    data: protobufDecoder(EServiceArchivingRequestCanceledByRevokedDelegationV2),
+    data: protobufDecoder(
+      EServiceArchivingRequestCanceledByRevokedDelegationV2
+    ),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
