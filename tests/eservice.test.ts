@@ -511,5 +511,70 @@ describe("eservice", () => {
     expect(decoded).toEqual(event);
   });
 
+  it("should correctly encode and decode EServiceDescriptorArchivingRequestCanceledByRevokedDelegation event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorArchivingRequestCanceledByRevokedDelegation",
+      data: {
+        descriptorId: "descriptor-id",
+        eservice: {
+          id: "test",
+          createdAt: 1n,
+          producerId: "test",
+          mode: EServiceModeV2.DELIVER,
+          description: "testtest",
+          name: "test",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "test",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 10,
+                        discreteConfig: {
+                          threshold: 50,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.GTE,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+              delegatedArchivingRequest: []
+            },
+          ],
+          delegatedArchivingRequest: []
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
   // TODO: Add more tests for other event types
 });
