@@ -9,6 +9,7 @@ import {
   EServiceDescriptorStateV2,
   AgreementApprovalPolicyV2,
   AttributeCertifiedDiscreteComparatorV2,
+  GracePeriodDaysV2,
 } from "../src/index.js";
 
 describe("eservice", () => {
@@ -60,8 +61,10 @@ describe("eservice", () => {
                 declared: [],
               },
               rejectionReasons: [],
+              delegatedArchivingRequest: []
             },
           ],
+          delegatedArchivingRequest: []
         },
       },
       stream_id: "123",
@@ -125,8 +128,10 @@ describe("eservice", () => {
                 bulk: false,
                 maxResultSet: 100,
               },
+              delegatedArchivingRequest: []
             },
           ],
+          delegatedArchivingRequest: []
         },
       },
       stream_id: "123",
@@ -174,8 +179,10 @@ describe("eservice", () => {
                 declared: [],
               },
               rejectionReasons: [],
+              delegatedArchivingRequest: []
             },
           ],
+          delegatedArchivingRequest: []
         },
       },
       stream_id: "123",
@@ -223,8 +230,10 @@ describe("eservice", () => {
                 declared: [],
               },
               rejectionReasons: [],
+              delegatedArchivingRequest: []
             },
           ],
+          delegatedArchivingRequest: []
         },
       },
       stream_id: "123",
@@ -283,13 +292,217 @@ describe("eservice", () => {
                 declared: [],
               },
               rejectionReasons: [],
+              delegatedArchivingRequest: []
             },
           ],
+          delegatedArchivingRequest: []
         },
       },
       stream_id: "stream-id",
       timestamp: new Date(),
       version: 2,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceArchivingRequestedByDelegate event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceArchivingRequestedByDelegate",
+      data: {
+        eservice: {
+          id: "test",
+          createdAt: 1n,
+          producerId: "test",
+          mode: EServiceModeV2.DELIVER,
+          description: "testtest",
+          name: "test",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "test",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 10,
+                        discreteConfig: {
+                          threshold: 50,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.GTE,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+              delegatedArchivingRequest: []
+            },
+          ],
+          delegatedArchivingRequest: [{
+            requestedAt: 0n,
+            requesterId: "",
+            gracePeriodDays: GracePeriodDaysV2.GRACE_PERIOD_90_DAYS,
+            archivingReason: "Archiving reason",
+          }]
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+   it("should correctly encode and decode EServiceDescriptorArchivingRequestedByDelegate event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorArchivingRequestedByDelegate",
+      data: {
+        descriptorId: "descriptor-id",
+        eservice: {
+          id: "test",
+          createdAt: 1n,
+          producerId: "test",
+          mode: EServiceModeV2.DELIVER,
+          description: "testtest",
+          name: "test",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "test",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 10,
+                        discreteConfig: {
+                          threshold: 50,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.GTE,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+              delegatedArchivingRequest: [{
+            requestedAt: 0n,
+            requesterId: "",
+            gracePeriodDays: GracePeriodDaysV2.GRACE_PERIOD_90_DAYS,
+          }]
+            },
+          ],
+          delegatedArchivingRequest: []
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceArchivingRequestCanceledByRevokedDelegation event", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceArchivingRequestCanceledByRevokedDelegation",
+      data: {
+        eservice: {
+          id: "test",
+          createdAt: 1n,
+          producerId: "test",
+          mode: EServiceModeV2.DELIVER,
+          description: "testtest",
+          name: "test",
+          technology: EServiceTechnologyV2.REST,
+          descriptors: [
+            {
+              id: "id",
+              version: 1n,
+              docs: [],
+              state: EServiceDescriptorStateV2.DRAFT,
+              audience: [],
+              voucherLifespan: 60,
+              dailyCallsPerConsumer: 10,
+              dailyCallsTotal: 1000,
+              createdAt: 1n,
+              serverUrls: ["pagopa.it"],
+              agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+              attributes: {
+                certified: [
+                  {
+                    values: [
+                      {
+                        id: "test",
+                        explicitAttributeVerification: true,
+                        dailyCallsPerConsumer: 10,
+                        discreteConfig: {
+                          threshold: 50,
+                          comparator:
+                            AttributeCertifiedDiscreteComparatorV2.GTE,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                verified: [],
+                declared: [],
+              },
+              rejectionReasons: [],
+              delegatedArchivingRequest: []
+            },
+          ],
+          delegatedArchivingRequest: []
+        },
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
     };
 
     const encoded = encodeOutboundEServiceEvent(event);
