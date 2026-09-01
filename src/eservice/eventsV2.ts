@@ -295,7 +295,9 @@ export function eServiceEventToBinaryDataV2(
     .with(
       { type: "EServiceDescriptorArchivingRequestCanceledByRevokedDelegation" },
       ({ data }) =>
-        EServiceDescriptorArchivingRequestCanceledByRevokedDelegationV2.toBinary(data)
+        EServiceDescriptorArchivingRequestCanceledByRevokedDelegationV2.toBinary(
+          data
+        )
     )
     .exhaustive();
 }
@@ -815,9 +817,11 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
     version: z.number(),
     timestamp: z.coerce.date(),
   }),
-    z.object({
+  z.object({
     event_version: z.literal(2),
-    type: z.literal("EServiceDescriptorArchivingRequestCanceledByRevokedDelegation"),
+    type: z.literal(
+      "EServiceDescriptorArchivingRequestCanceledByRevokedDelegation"
+    ),
     data: protobufDecoder(
       EServiceDescriptorArchivingRequestCanceledByRevokedDelegationV2
     ),
