@@ -1,6 +1,23 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## 1.8.23
+
+- Added `DelegatedDescriptorArchivingRequestV2` property to `EServiceDescriptorV2`
+- Added `DelegatedEServiceArchivingRequestV2` property to `EServiceV2`
+- Added archiving requests events:
+  - `EServiceDescriptorArchivingRequestedByDelegateV2`
+  - `EServiceDescriptorArchivingRequestRejectedByDelegatorV2`
+  - `EServiceDescriptorArchivingRequestApprovedByDelegatorV2`
+  - `EServiceDescriptorArchivingRequestCanceledByDelegateV2`
+  - `EServiceArchivingRequestCanceledByRevokedDelegationV2`
+  - `EServiceDescriptorArchivingRequestCanceledByRevokedDelegationV2`
+  - `EServiceArchivingRequestedByDelegateV2`
+  - `EServiceArchivingRequestRejectedByDelegatorV2`
+  - `EServiceArchivingRequestApprovedByDelegatorV2`
+  - `EServiceArchivingRequestCanceledByDelegateV2`
+
 ## 1.8.22
 
 - Added `gracePeriodDays` property to `ArchivingScheduleV2`
