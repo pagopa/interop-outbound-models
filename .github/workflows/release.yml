@@ -43,14 +43,4 @@ jobs:
 
       - run: pnpm build
 
-      - name: Publish to npm
-        run: |
-          set -euo pipefail
-          VERSION=$(jq -r '.version' ./package.json)
-          if [[ "$VERSION" == *-* ]]; then
-            DIST_TAG="${VERSION#*-}"
-            DIST_TAG="${DIST_TAG%%.*}"
-            npm publish --provenance --access public --tag "$DIST_TAG"
-          else
-            npm publish --provenance --access public
-          fi
+      - run: npm publish --provenance --access public --tag latest
