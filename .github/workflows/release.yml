@@ -35,7 +35,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
 
       - run: pnpm i --frozen-lockfile
 
@@ -43,4 +43,14 @@ jobs:
 
       - run: pnpm build
 
-      - run: npm publish --provenance --access public
+      - name: Publish to npm
+        run: |
+          set -euo pipefail
+          VERSION=$(jq -r '.version' ./package.json)
+          if [[ "$VERSION" == *-* ]]; then
+            DIST_TAG="${VERSION#*-}"
+            DIST_TAG="${DIST_TAG%%.*}"
+            npm publish --provenance --access public --tag "$DIST_TAG"
+          else
+            npm publish --provenance --access public
+          fi
