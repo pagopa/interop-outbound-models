@@ -2,9 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.25
+
+- Updated `EServiceDescriptorUpdatedByRevokedDelegationV2` in `EServiceDescriptorRestoredToDraftByRevokedDelegationV2`
+
 ## 1.8.24
 
-- Added `EServiceDescriptorRestoredToDraftByRevokedDelegationV2`
+- Added `EServiceDescriptorUpdatedByRevokedDelegationV2`
 
 ## 1.8.23
 
