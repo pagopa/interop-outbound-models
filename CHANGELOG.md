@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.8.24
 
-- Added `EServiceDescriptorUpdatedByRevokedDelegationV2`
+- Added `EServiceDescriptorRestoredToDraftUpdatedRevokedDelegationV2`
 
 ## 1.8.23
 
