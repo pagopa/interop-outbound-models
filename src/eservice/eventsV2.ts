@@ -303,9 +303,7 @@ export function eServiceEventToBinaryDataV2(
     .with(
       { type: "EServiceDescriptorRestoredToDraftByRevokedDelegation" },
       ({ data }) =>
-        EServiceDescriptorRestoredToDraftByRevokedDelegationV2.toBinary(
-          data
-        )
+        EServiceDescriptorRestoredToDraftByRevokedDelegationV2.toBinary(data)
     )
     .exhaustive();
 }
@@ -839,9 +837,7 @@ export const EServiceEventV2 = z.discriminatedUnion("type", [
   }),
   z.object({
     event_version: z.literal(2),
-    type: z.literal(
-      "EServiceDescriptorRestoredToDraftByRevokedDelegation"
-    ),
+    type: z.literal("EServiceDescriptorRestoredToDraftByRevokedDelegation"),
     data: protobufDecoder(
       EServiceDescriptorRestoredToDraftByRevokedDelegationV2
     ),
