@@ -312,7 +312,7 @@ message EServiceDescriptorArchivingRequestCanceledByRevokedDelegationV2 {
   EServiceV2 eservice = 2;
 }
 
-message EServiceDescriptorUpdatedByRevokedDelegationV2 {
+message EServiceDescriptorRestoredToDraftByRevokedDelegationV2 {
   string descriptorId = 1;
   EServiceV2 eservice = 2;
 }
