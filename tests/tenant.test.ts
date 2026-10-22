@@ -61,6 +61,8 @@ describe("tenant", () => {
               assignmentTimestamp: 1n,
             },
           ],
+          parentTenantId: "parent-tenant-id",
+          rootTenantId: "root-tenant-id",
         },
       },
       stream_id: "tenant-stream",

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.26
+
+- Added `parentTenantId` and `rootTenantId` properties to `TenantV2`
+
 ## 1.8.25
 
 - Updated `EServiceDescriptorUpdatedByRevokedDelegationV2` in `EServiceDescriptorRestoredToDraftByRevokedDelegationV2`
