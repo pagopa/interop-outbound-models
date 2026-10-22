@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## 1.8.26
 
 - Added `parentTenantId` and `rootTenantId` properties to `TenantV2`
+- Added `TenantParentUpdatedV2` message to `TenantEventV2`
 
 ## 1.8.25
 
