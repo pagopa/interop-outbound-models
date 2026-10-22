@@ -75,4 +75,38 @@ describe("tenant", () => {
 
     expect(decoded).toEqual(event);
   });
+
+  it("should correctly encode and decode TenantParentUpdated event", () => {
+    const event: TenantEvent = {
+      event_version: 2,
+      type: "TenantParentUpdated",
+      data: {
+        tenant: {
+          id: "tenant-id",
+          selfcareId: "selfcare-id",
+          externalId: {
+            origin: "IPA",
+            value: "tenant-code",
+          },
+          features: [],
+          attributes: [],
+          createdAt: 1n,
+          name: "Tenant name",
+          kind: TenantKindV2.PA,
+          onboardedAt: 1n,
+          remoteIds: [],
+          parentTenantId: "parent-tenant-id",
+          rootTenantId: "root-tenant-id",
+        },
+      },
+      stream_id: "tenant-stream",
+      timestamp: new Date(),
+      version: 2,
+    };
+
+    const encoded = encodeOutboundTenantEvent(event);
+    const decoded = decodeOutboundTenantEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
 });
