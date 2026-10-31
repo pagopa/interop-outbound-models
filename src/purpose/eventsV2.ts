@@ -3,6 +3,8 @@ import { z } from "zod";
 import {
   PurposeAddedV2,
   DraftPurposeUpdatedV2,
+  PurposeTitleUpdatedV2,
+  PurposeDescriptionUpdatedV2,
   PurposeWaitingForApprovalV2,
   PurposeActivatedV2,
   DraftPurposeDeletedV2,
@@ -31,6 +33,12 @@ export function purposeEventToBinaryDataV2(event: PurposeEventV2): Uint8Array {
     .with({ type: "PurposeAdded" }, ({ data }) => PurposeAddedV2.toBinary(data))
     .with({ type: "DraftPurposeUpdated" }, ({ data }) =>
       DraftPurposeUpdatedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTitleUpdated" }, ({ data }) =>
+      PurposeTitleUpdatedV2.toBinary(data)
+    )
+    .with({ type: "PurposeDescriptionUpdated" }, ({ data }) =>
+      PurposeDescriptionUpdatedV2.toBinary(data)
     )
     .with({ type: "PurposeWaitingForApproval" }, ({ data }) =>
       PurposeWaitingForApprovalV2.toBinary(data)
@@ -108,6 +116,22 @@ export const PurposeEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("DraftPurposeUpdated"),
     data: protobufDecoder(DraftPurposeUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTitleUpdated"),
+    data: protobufDecoder(PurposeTitleUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.coerce.date(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeDescriptionUpdated"),
+    data: protobufDecoder(PurposeDescriptionUpdatedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.coerce.date(),
