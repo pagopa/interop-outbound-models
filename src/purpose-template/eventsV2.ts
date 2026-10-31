@@ -8,6 +8,9 @@ import {
   PurposeTemplateArchivedV2,
   PurposeTemplateDraftDeletedV2,
   PurposeTemplateDraftUpdatedV2,
+  PurposeTemplatePurposeTitleUpdatedV2,
+  PurposeTemplatePurposeDescriptionUpdatedV2,
+  PurposeTemplateTargetDescriptionUpdatedV2,
   PurposeTemplateEServiceLinkedV2,
   PurposeTemplateEServiceTemplateLinkedV2,
   PurposeTemplateEServiceTemplateUnlinkedV2,
@@ -41,6 +44,15 @@ export function purposeTemplateEventToBinaryDataV2(
     )
     .with({ type: "PurposeTemplateDraftUpdated" }, ({ data }) =>
       PurposeTemplateDraftUpdatedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplatePurposeTitleUpdated" }, ({ data }) =>
+      PurposeTemplatePurposeTitleUpdatedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplatePurposeDescriptionUpdated" }, ({ data }) =>
+      PurposeTemplatePurposeDescriptionUpdatedV2.toBinary(data)
+    )
+    .with({ type: "PurposeTemplateTargetDescriptionUpdated" }, ({ data }) =>
+      PurposeTemplateTargetDescriptionUpdatedV2.toBinary(data)
     )
     .with({ type: "PurposeTemplateDraftDeleted" }, ({ data }) =>
       PurposeTemplateDraftDeletedV2.toBinary(data)
@@ -120,6 +132,30 @@ export const PurposeTemplateEventV2 = z.discriminatedUnion("type", [
     event_version: z.literal(2),
     type: z.literal("PurposeTemplateDraftUpdated"),
     data: protobufDecoder(PurposeTemplateDraftUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplatePurposeTitleUpdated"),
+    data: protobufDecoder(PurposeTemplatePurposeTitleUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplatePurposeDescriptionUpdated"),
+    data: protobufDecoder(PurposeTemplatePurposeDescriptionUpdatedV2),
+    stream_id: z.string(),
+    version: z.number(),
+    timestamp: z.string(),
+  }),
+  z.object({
+    event_version: z.literal(2),
+    type: z.literal("PurposeTemplateTargetDescriptionUpdated"),
+    data: protobufDecoder(PurposeTemplateTargetDescriptionUpdatedV2),
     stream_id: z.string(),
     version: z.number(),
     timestamp: z.string(),

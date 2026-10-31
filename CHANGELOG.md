@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.26
+
+- Added metadata events with outbound snapshots, validators and binary encoders:
+  - `PurposeTitleUpdatedV2`
+  - `PurposeDescriptionUpdatedV2`
+  - `PurposeTemplatePurposeTitleUpdatedV2`
+  - `PurposeTemplatePurposeDescriptionUpdatedV2`
+  - `PurposeTemplateTargetDescriptionUpdatedV2`
+
 ## 1.8.25
 
 - Updated `EServiceDescriptorUpdatedByRevokedDelegationV2` in `EServiceDescriptorRestoredToDraftByRevokedDelegationV2`
