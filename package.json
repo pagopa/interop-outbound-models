@@ -25,7 +25,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ts-pattern": "5.2.0",
-    "zod": "3.23.8",
+    "zod": "4.6.6",
     "@protobuf-ts/runtime": "2.9.4"
   },
   "devDependencies": {
