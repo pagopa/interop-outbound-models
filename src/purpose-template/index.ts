@@ -33,20 +33,12 @@ export function decodeOutboundPurposeTemplateEvent(
   return PurposeTemplateEvent.parse(JSON.parse(encodedEvent));
 }
 
-export const PurposeTemplateEvent = VersionedEvent.transform((obj, ctx) => {
-  const res = match(obj)
-    .with({ event_version: 1 }, () => {
-      throw new Error("Unsupported event version");
-    })
-    .with({ event_version: 2 }, () => PurposeTemplateEventV2.safeParse(obj))
-    .exhaustive();
-
-  if (!res.success) {
-    res.error.issues.forEach(ctx.addIssue);
-    return z.NEVER;
+export const PurposeTemplateEvent = z.preprocess((obj) => {
+  if (VersionedEvent.safeParse(obj).data?.event_version === 1) {
+    throw new Error("Unsupported event version");
   }
-  return res.data;
-});
+  return obj;
+}, PurposeTemplateEventV2);
 
 export type PurposeTemplateEventType = PurposeTemplateEvent["type"];
 export type PurposeTemplateEvent = z.infer<typeof PurposeTemplateEvent>;
