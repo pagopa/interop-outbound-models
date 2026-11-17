@@ -94,4 +94,70 @@ describe("purpose-template", () => {
 
     expect(decoded).toEqual(event);
   });
+
+  it("should correctly encode and decode PurposeTemplatePurposeTitleUpdated event", () => {
+    const event: PurposeTemplateEvent = {
+      event_version: 2,
+      type: "PurposeTemplatePurposeTitleUpdated",
+      data: {
+        purposeTemplate: {
+          ...purposeTemplate,
+          purposeTitle: "Updated purpose title",
+          updatedAt: 2n,
+        },
+      },
+      stream_id: "123",
+      timestamp: "2026-05-20T12:00:00.000Z",
+      version: 1,
+    };
+
+    const encoded = encodeOutboundPurposeTemplateEvent(event);
+    const decoded = decodeOutboundPurposeTemplateEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode PurposeTemplatePurposeDescriptionUpdated event", () => {
+    const event: PurposeTemplateEvent = {
+      event_version: 2,
+      type: "PurposeTemplatePurposeDescriptionUpdated",
+      data: {
+        purposeTemplate: {
+          ...purposeTemplate,
+          purposeDescription: "Updated purpose description",
+          updatedAt: 2n,
+        },
+      },
+      stream_id: "123",
+      timestamp: "2026-05-20T12:00:00.000Z",
+      version: 1,
+    };
+
+    const encoded = encodeOutboundPurposeTemplateEvent(event);
+    const decoded = decodeOutboundPurposeTemplateEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode PurposeTemplateTargetDescriptionUpdated event", () => {
+    const event: PurposeTemplateEvent = {
+      event_version: 2,
+      type: "PurposeTemplateTargetDescriptionUpdated",
+      data: {
+        purposeTemplate: {
+          ...purposeTemplate,
+          targetDescription: "Updated target description",
+          updatedAt: 2n,
+        },
+      },
+      stream_id: "123",
+      timestamp: "2026-05-20T12:00:00.000Z",
+      version: 1,
+    };
+
+    const encoded = encodeOutboundPurposeTemplateEvent(event);
+    const decoded = decodeOutboundPurposeTemplateEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
 });
