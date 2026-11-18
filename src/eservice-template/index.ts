@@ -33,20 +33,12 @@ export function decodeOutboundEServiceTemplateEvent(
   return EServiceTemplateEvent.parse(JSON.parse(encodedEvent));
 }
 
-export const EServiceTemplateEvent = VersionedEvent.transform((obj, ctx) => {
-  const res = match(obj)
-    .with({ event_version: 1 }, () => {
-      throw new Error("Unsupported event version");
-    })
-    .with({ event_version: 2 }, () => EServiceTemplateEventV2.safeParse(obj))
-    .exhaustive();
-
-  if (!res.success) {
-    res.error.issues.forEach(ctx.addIssue);
-    return z.NEVER;
+export const EServiceTemplateEvent = z.preprocess((obj) => {
+  if (VersionedEvent.safeParse(obj).data?.event_version === 1) {
+    throw new Error("Unsupported event version");
   }
-  return res.data;
-});
+  return obj;
+}, EServiceTemplateEventV2);
 
 export type EServiceTemplateEventType = EServiceTemplateEvent["type"];
 export type EServiceTemplateEvent = z.infer<typeof EServiceTemplateEvent>;

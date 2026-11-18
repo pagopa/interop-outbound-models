@@ -2,10 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.8.26
+## 1.8.27-gestione.aoo.uo.1
 
 - Added `parentTenantId` and `rootTenantId` properties to `TenantV2`
 - Added `TenantParentUpdatedV2` message to `TenantEventV2`
+
+## 1.8.27
+
+- Added metadata events with outbound snapshots, validators and binary encoders:
+  - `PurposeTitleUpdatedV2`
+  - `PurposeDescriptionUpdatedV2`
+  - `PurposeTemplatePurposeTitleUpdatedV2`
+  - `PurposeTemplatePurposeDescriptionUpdatedV2`
+  - `PurposeTemplateTargetDescriptionUpdatedV2`
+
+## 1.8.26
+
+- Bump zod from 3.23.8 to 4.6.6
+- Adapted event schemas (`utils.ts` and the `index.ts` of each domain) to the zod 4 API
+- Bump vitest from 3.2.6 to 4.1.11
 
 ## 1.8.25
 

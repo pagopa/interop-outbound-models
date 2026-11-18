@@ -1,0 +1,3 @@
+{
+  "npmrc": "save-prefix=\nauto-install-peers=false\nstrict-peer-dependencies=false"
+}
