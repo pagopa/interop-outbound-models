@@ -1,6 +1,5 @@
 import { match } from "ts-pattern";
 import { z } from "zod";
-import { VersionedEvent } from "../utils.js";
 import { EServiceEventV1, eServiceEventToBinaryDataV1 } from "./eventsV1.js";
 import { EServiceEventV2, eServiceEventToBinaryDataV2 } from "./eventsV2.js";
 
@@ -28,18 +27,10 @@ export function decodeOutboundEServiceEvent(
   return EServiceEvent.parse(JSON.parse(encodedEvent));
 }
 
-export const EServiceEvent = VersionedEvent.transform((obj, ctx) => {
-  const res = match(obj)
-    .with({ event_version: 1 }, () => EServiceEventV1.safeParse(obj))
-    .with({ event_version: 2 }, () => EServiceEventV2.safeParse(obj))
-    .exhaustive();
-
-  if (!res.success) {
-    res.error.issues.forEach(ctx.addIssue);
-    return z.NEVER;
-  }
-  return res.data;
-});
+export const EServiceEvent = z.discriminatedUnion("event_version", [
+  EServiceEventV1,
+  EServiceEventV2,
+]);
 
 export type EServiceEventType = EServiceEvent["type"];
 export type EServiceEvent = z.infer<typeof EServiceEvent>;
