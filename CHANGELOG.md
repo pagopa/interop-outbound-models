@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.8.27-gestione.aoo.uo.1
+## 1.8.27
 
 - Added metadata events with outbound snapshots, validators and binary encoders:
   - `PurposeTitleUpdatedV2`
