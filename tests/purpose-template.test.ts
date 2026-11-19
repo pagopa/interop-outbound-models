@@ -9,6 +9,7 @@ import {
   EServiceModeV2,
   EServiceTechnologyV2,
   AgreementApprovalPolicyV2,
+  EServiceDescriptorStateV2,
 } from "../src/index.js";
 
 const purposeTemplate = {
@@ -53,7 +54,69 @@ const eserviceTemplate = {
   ],
 };
 
+const templateInstanceEService = {
+  id: "eservice-id",
+  producerId: "producer-123",
+  name: "Test EService",
+  description: "Test eservice description",
+  technology: EServiceTechnologyV2.REST,
+  mode: EServiceModeV2.DELIVER,
+  createdAt: 1n,
+  templateId: "eservice-template-id",
+  descriptors: [
+    {
+      id: "descriptor-id",
+      version: 1n,
+      docs: [],
+      state: EServiceDescriptorStateV2.PUBLISHED,
+      audience: [],
+      voucherLifespan: 60,
+      dailyCallsPerConsumer: 10,
+      dailyCallsTotal: 1000,
+      createdAt: 1n,
+      serverUrls: ["pagopa.it"],
+      agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+      attributes: {
+        certified: [],
+        verified: [],
+        declared: [],
+      },
+      rejectionReasons: [],
+      templateVersionRef: {
+        id: "version-id",
+        interfaceMetadata: {
+          contactUrl: "https://contact.example.com",
+          termsAndConditionsUrl: "https://terms.example.com",
+        },
+      },
+      delegatedArchivingRequest: [],
+    },
+  ],
+  delegatedArchivingRequest: [],
+};
+
 describe("purpose-template", () => {
+  it("should correctly encode and decode PurposeTemplateEServiceLinked event with template interface metadata", () => {
+    const event: PurposeTemplateEvent = {
+      event_version: 2,
+      type: "PurposeTemplateEServiceLinked",
+      data: {
+        purposeTemplate,
+        eservice: templateInstanceEService,
+        descriptorId: "descriptor-id",
+        createdAt: 1n,
+      },
+      stream_id: "123",
+      timestamp: "2026-05-20T12:00:00.000Z",
+      version: 1,
+    };
+
+    const encoded = encodeOutboundPurposeTemplateEvent(event);
+    const decoded = decodeOutboundPurposeTemplateEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
   it("should correctly encode and decode PurposeTemplateEServiceTemplateLinked event", () => {
     const event: PurposeTemplateEvent = {
       event_version: 2,

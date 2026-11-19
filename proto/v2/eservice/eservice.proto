@@ -88,8 +88,8 @@ message EServiceDescriptorV2 {
 
 
 message TemplateInstanceInterfaceMetadataV2 {
-  optional string contactName = 1;
-  optional string contactEmail = 2;
+  reserved 1, 2;
+  reserved "contactName", "contactEmail";
   optional string contactUrl = 3;
   optional string termsAndConditionsUrl = 4;
 }

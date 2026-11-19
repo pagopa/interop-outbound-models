@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { describe, it, expect } from "vitest";
+import { BinaryWriter, WireType } from "@protobuf-ts/runtime";
 import {
   encodeOutboundEServiceEvent,
   decodeOutboundEServiceEvent,
@@ -10,7 +11,48 @@ import {
   AgreementApprovalPolicyV2,
   AttributeCertifiedDiscreteComparatorV2,
   GracePeriodDaysV2,
+  EServiceTemplateVersionRefV2,
+  EServiceV2,
+  TemplateInstanceInterfaceMetadataV2,
 } from "../src/index.js";
+
+const buildTemplateInstanceEService = (
+  templateVersionRef: EServiceTemplateVersionRefV2
+): EServiceV2 => ({
+  id: "eservice-id",
+  createdAt: 1n,
+  producerId: "producer-id",
+  mode: EServiceModeV2.DELIVER,
+  description: "eservice description",
+  name: "eservice name",
+  technology: EServiceTechnologyV2.REST,
+  templateId: "eservice-template-id",
+  descriptors: [
+    {
+      id: "descriptor-id",
+      version: 1n,
+      docs: [],
+      state: EServiceDescriptorStateV2.PUBLISHED,
+      audience: [],
+      voucherLifespan: 60,
+      dailyCallsPerConsumer: 10,
+      dailyCallsTotal: 1000,
+      createdAt: 1n,
+      publishedAt: 2n,
+      serverUrls: ["pagopa.it"],
+      agreementApprovalPolicy: AgreementApprovalPolicyV2.AUTOMATIC,
+      attributes: {
+        certified: [],
+        verified: [],
+        declared: [],
+      },
+      rejectionReasons: [],
+      templateVersionRef,
+      delegatedArchivingRequest: [],
+    },
+  ],
+  delegatedArchivingRequest: [],
+});
 
 describe("eservice", () => {
   it("should correctly encode and decode EServiceDescriptorArchived event", () => {
@@ -574,6 +616,72 @@ describe("eservice", () => {
     const decoded = decodeOutboundEServiceEvent(encoded);
 
     expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceDescriptorPublished event with template interface metadata", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorPublished",
+      data: {
+        descriptorId: "descriptor-id",
+        eservice: buildTemplateInstanceEService({
+          id: "eservice-template-version-id",
+          interfaceMetadata: {
+            contactUrl: "https://contact.example.com",
+            termsAndConditionsUrl: "https://terms.example.com",
+          },
+        }),
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should correctly encode and decode EServiceDescriptorPublished event with template version ref without interface metadata", () => {
+    const event: EServiceEvent = {
+      event_version: 2,
+      type: "EServiceDescriptorPublished",
+      data: {
+        descriptorId: "descriptor-id",
+        eservice: buildTemplateInstanceEService({
+          id: "eservice-template-version-id",
+        }),
+      },
+      stream_id: "123",
+      timestamp: new Date(),
+      version: 1,
+    };
+
+    const encoded = encodeOutboundEServiceEvent(event);
+    const decoded = decodeOutboundEServiceEvent(encoded);
+
+    expect(decoded).toEqual(event);
+  });
+
+  it("should decode template interface metadata written with the legacy contact fields keeping only the remaining fields", () => {
+    const legacyBytes = new BinaryWriter()
+      .tag(1, WireType.LengthDelimited)
+      .string("Legacy contact name")
+      .tag(2, WireType.LengthDelimited)
+      .string("legacy.contact@example.com")
+      .tag(3, WireType.LengthDelimited)
+      .string("https://contact.example.com")
+      .tag(4, WireType.LengthDelimited)
+      .string("https://terms.example.com")
+      .finish();
+
+    const decoded = TemplateInstanceInterfaceMetadataV2.fromBinary(legacyBytes);
+
+    expect(decoded.contactUrl).toBe("https://contact.example.com");
+    expect(decoded.termsAndConditionsUrl).toBe("https://terms.example.com");
+    expect(decoded).not.toHaveProperty("contactName");
+    expect(decoded).not.toHaveProperty("contactEmail");
   });
 
   // TODO: Add more tests for other event types
