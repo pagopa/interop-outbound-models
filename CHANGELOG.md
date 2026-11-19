@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0
+
+### Removed
+
+- Removed `contactName` and `contactEmail` from `TemplateInstanceInterfaceMetadataV2` (`EServiceTemplateVersionRefV2.interfaceMetadata`); tags `1`, `2` and both field names are reserved. Breaking change: consumers reading these fields must stop using them. `contactUrl` and `termsAndConditionsUrl` are unchanged.
+
 ## 1.8.27
 
 - Added metadata events with outbound snapshots, validators and binary encoders:
